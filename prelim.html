@@ -13,7 +13,7 @@
 <link href="prelim_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.5.57">
 
-  <meta name="author" content="Muxin Hua">
+  <meta name="author" content="Muxin Hua   Advisors: Dr.&nbsp;Susan VanderPlas, Dr.&nbsp;Heike Hoffman">
   <title>Exploring the Gap</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -343,6 +343,11 @@
       margin-right: 0; 
     }
   </style>
+  <style>
+  #title-slide .quarto-title-authors {
+    margin-top: 60px;
+  }
+  </style>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -350,14 +355,17 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Exploring the Gap</h1>
-  <p class="subtitle">Neural Network-based Vision Model and Visual Recognition of Human</p>
+  <p class="subtitle"></p><p>Neural Network-based Vision Model and Visual Recognition of Human</p><p></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Muxin Hua 
+Muxin Hua <br> <span style="font-size: 0.7em;">Advisors: Dr.&nbsp;Susan VanderPlas, Dr.&nbsp;Heike Hoffman</span> 
 </div>
-</div>
+        <p class="quarto-title-affiliation">
+            University of Nebraska Lincoln
+          </p>
+    </div>
 </div>
 
 </section>
@@ -373,7 +381,6 @@ Muxin Hua
 <li>Object detection network performance in identifying footwear characteristics</li>
 </ul></li>
 <li><p>Moving forward <!-- * Classification network performance on challenging geometric patterns --> <!-- * Factors influencing polygon classification by neural networks --></p></li>
-<li><p>Contributions to literature</p></li>
 <li><p>Questions</p></li>
 </ul>
 </div>
@@ -382,7 +389,7 @@ Muxin Hua
 <section>
 <section id="motivation" class="title-slide slide level1 center">
 <h1><span style="font-size: 132px;">Motivation</span></h1>
-
+<!-- ############################## page4 ####################### -->
 </section>
 <section id="forensic-footwear-evidence" class="slide level2">
 <h2>Forensic Footwear Evidence</h2>
@@ -401,7 +408,7 @@ Muxin Hua
           display:block!important;
       }</style></aside>
 <div class="columns">
-<p><strong>Class Characteristic</strong> can provide association between a suspect and the scene <span class="citation" data-cites="hammer2018footwear">(<a href="#/reference" role="doc-biblioref" onclick="">Hammer 2018</a>)</span></p><div class="column" style="width:45%;">
+<p><strong>Class Characteristic</strong> can provide association between a suspect and the scene <span class="citation" data-cites="hammer2018footwear">(<a href="#/average-precision" role="doc-biblioref" onclick="">Hammer 2018</a>)</span></p><div class="column" style="width:45%;">
 <ul>
 <li class="fragment"><p>Outsole design</p></li>
 <li class="fragment"><p>Manufactured features</p></li>
@@ -425,19 +432,20 @@ Muxin Hua
 <!-- -   physical sizes -->
 <!-- ::: -->
 <!-- ::: {#fig-characteristics layout-ncol="2"} -->
+<!-- ::: {.compact-figures layout-ncol=1 style="background: #f1f3f5; padding: 6px 12px; border-radius: 10px;"} -->
 <div>
 
 </div>
-<div class="compact-figures quarto-layout-panel" style="background: #f1f3f5; padding: 6px 12px; border-radius: 10px;" data-layout-ncol="1">
+<div class="compact-figures quarto-layout-panel" style="margin-top: -30px;; padding: 6px 12px; border-radius: 10px;" data-layout-ncol="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
 <div id="fig-design" class="lightbox quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Outsole of a  Adidas adipure Golf Shoes  "><img data-src="images/feature.jpg" class="quarto-figure quarto-figure-center" height="200"></a>
+<a href="images/feature.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Figure&nbsp;1: Outsole of a  Adidas adipure Golf Shoes[1]  "><img data-src="images/feature.jpg" class="quarto-figure quarto-figure-center" height="200"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-design-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Outsole of a <!-- [ --> Adidas adipure Golf Shoes <!-- ] --> <!-- (https://www.nike.com/w/zoom-air-shoes-8y8c6zy7ok) -->
+Figure&nbsp;1: Outsole of a <!-- [ --> Adidas adipure Golf Shoes<sup>[1]</sup> <!-- ] --> <!-- (https://www.nike.com/w/zoom-air-shoes-8y8c6zy7ok) -->
 </figcaption>
 </figure>
 </div>
@@ -448,10 +456,10 @@ Figure&nbsp;1: Outsole of a <!-- [ --> Adidas adipure Golf Shoes <!-- ] --> <!--
 <div id="fig-sizes" class="lightbox quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-sizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="images/chracter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Specific outsole design differences across sizes within the same general tread design [@hammer2018footwear]"><img data-src="images/chracter.png" class="quarto-figure quarto-figure-center" height="200"></a>
+<a href="images/chracter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: Specific outsole design differences across sizes within the same general tread design [2]"><img data-src="images/chracter.png" class="quarto-figure quarto-figure-center" height="200"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sizes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Specific outsole design differences across sizes within the same general tread design <span class="citation" data-cites="hammer2018footwear">(<a href="#/reference" role="doc-biblioref" onclick="">Hammer 2018</a>)</span>
+Figure&nbsp;2: Specific outsole design differences across sizes within the same general tread design <sup>[2]</sup>
 </figcaption>
 </figure>
 </div>
@@ -464,6 +472,9 @@ Figure&nbsp;2: Specific outsole design differences across sizes within the same 
 </div>
 </div>
 </div></div>
+<div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
+<p>Image sources: 1 <span class="citation" data-cites="Adipure">(<a href="#/average-precision" role="doc-biblioref" onclick=""><strong>Adipure?</strong></a>)</span> <br> 2 <span class="citation" data-cites="hammer2018footwear">Hammer (<a href="#/average-precision" role="doc-biblioref" onclick="">2018</a>)</span></p>
+</div>
 <!-- ##########################3####### New Slide ######################## -->
 </section>
 <section id="frequency-study" class="slide level2">
@@ -478,13 +489,13 @@ Figure&nbsp;2: Specific outsole design differences across sizes within the same 
 <!-- :::: -->
 <ul>
 <li class="fragment" data-fragment-index="0">
-How often a design may occur in a population
+<p>How often a design may occur in a population</p>
 </li>
 <li class="fragment" data-fragment-index="1">
-How often a random accidental characteristic is likely to repeat
+<p>How often a random accidental characteristic is likely to repeat</p>
 </li>
 <li class="fragment" data-fragment-index="2">
-Use pattern descriptions to characterize the types of shoes worn by a population <!-- $\hat{p}=\frac{}{}$  -->
+<p>Use pattern descriptions to characterize the types of shoes worn by a population <!-- $\hat{p}=\frac{}{}$  --></p>
 </li>
 <!-- <li class="fragment" data-fragment-index="2"> Estimate the distribution of classes $\hat{p}=\frac{}{}$ </li> -->
 </ul>
@@ -509,77 +520,85 @@ Use pattern descriptions to characterize the types of shoes worn by a population
 <!-- ![Evaluate evidence](images/ex1.jpg){height=200px fig-align="center"} -->
 <!-- ::: -->
 <!-- :::: -->
-<!-- ################################# New Slide ######################## -->
+<!-- ################################# PAGE 6 ######################## -->
 </section>
 <section id="local-level" class="slide level2">
 <h2>Local Level</h2>
 <p><span style="font-size: 0.55em; color: #64748b;">Motivation · 3/4</span></p>
 <div class="columns">
-<div style="display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 20px; align-items: start;">
-
-  <div>
+<div class="column" style="width:60%;">
+<ul>
+  <li class="fragment" data-fragment-index="0">
+    There is a large volume of data
     <ul>
-      <li class="fragment" data-fragment-index="0">
-        There is a large volume of data
-        <ul>
-          <li>Data needs to be collected from local residents 
-          <!-- for estimation -->
-          </li>
-          <li>Automating the data processing is required</li>
-        </ul>
-      </li>
-      <li class="fragment" data-fragment-index="1">
-        The examiners evaluate evidence in the way human does
-        <ul>
-          <li>The automating process needs to align with human judgement</li>
-        </ul>
-      </li>
+      <li>Data needs to be collected from local residents</li>
+      <li>Automating the data processing is required</li>
     </ul>
-  </div>
-
-  <div style="background: #f1f3f5; border-radius: 10px; padding: 46px;">
-    <div class="fragment" data-fragment-index="0">
-      <img src="images/scanner.png" alt="Collect" style="display: block; width: 100%; height: 600px; object-fit: contain; margin: 0;">
-    </div>
-    <!-- <div class="fragment" data-fragment-index="1" style="margin-top: 12px;"> -->
-    <!--   <img src="images/ex1.jpg" alt="Evaluate" style="display: block; width: 100%; height: 300px; object-fit: contain; margin: 0;"> -->
-    <!-- </div> -->
-  </div>
-
+  </li>
+  <li class="fragment" data-fragment-index="1">
+    The examiners evaluate evidence in the way humans do
+    <ul>
+      <li>The automated process needs to align with human judgement</li>
+    </ul>
+  </li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div class="fragment" data-fragment-index="0" style="background: #ffffff; border-radius: 10px; padding: 46px;">
+<div id="fig-scanner" class="quarto-float quarto-figure quarto-figure-center" alt="Collect" style="height: 600px; object-fit: contain;">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-scanner-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/scanner.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: A scanner for shoesole data collection"><img data-src="images/scanner.png" style="height: 600px; object-fit: contain;;width:100.0%" alt="Collect"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scanner-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: A scanner for shoesole data collection
+</figcaption>
+</figure>
 </div>
 </div>
+</div></div>
+<!-- ##################### PAGE 7 ################################3 -->
 </section>
 <section id="tentative-solution" class="slide level2">
 <h2>Tentative Solution</h2>
 <p><span style="font-size: 0.55em; color: #64748b;">Motivation · 4/4</span></p>
-<div style="display:grid; grid-template-columns:minmax(0,3fr) minmax(0,2fr); gap:24px; align-items:start;">
-  <div>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+  <li>Neural network-based vision model
     <ul>
-      <li>Neural network-based vision model
-        <ul>
-          <li class="fragment" data-fragment-index="0">Localize patterns</li>
-          <li class="fragment" data-fragment-index="1">Classify the pattern within the detected bounding box.</li>
-        </ul>
+      <li class="fragment" data-fragment-index="0">
+        Localize patterns
+      </li>
+      <li class="fragment" data-fragment-index="1">
+        Classify the pattern within the detected bounding box
       </li>
     </ul>
-  </div>
+  </li>
+</ul>
+</div><div class="column" style="width:40%;">
+<div id="fig-pattern" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-pattern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div style="position:relative;">
+  <img src="images/nike-air-zoom-pegasus-35-shield-olive-flak-metallic-silver-black-string_product_9097371_color_769335.jpg" alt="Shoe with a detected triangular pattern" style="display:block; width:100%; height:auto; margin:0;">
 
-  <div style="position:relative;">
-    <img src="images/nike-air-zoom-pegasus-35-shield-olive-flak-metallic-silver-black-string_product_9097371_color_769335.jpg" alt="" style="display:block; width:100%; height:auto; margin:0;">
+  <div style="position:absolute; left:42%; top:40%; width:13%; height:17%;">
+    <div class="fragment" data-fragment-index="0" style="position:absolute; inset:0; border:4px solid #FFFFFF; box-sizing:border-box;">
+    </div>
 
-    <div style="position:absolute; left:42%; top:40%; width:13%; height:17%;">
-      <div class="fragment" data-fragment-index="0" style="position:absolute; inset:0; border:4px solid #FFFFFF; box-sizing:border-box;">
-           <!-- #e53935 -->
-           
-      </div>
-
-      <div class="fragment" data-fragment-index="1" style="position:absolute; bottom:100%; left:0; background:#FFFFFF; color:black; padding:3px 8px; font-size:0.55em; white-space:nowrap;">
-        triangle
-      </div>
+    <div class="fragment" data-fragment-index="1" style="position:absolute; bottom:100%; left:0; background:#FFFFFF; color:black; padding:3px 8px; font-size:0.55em; white-space:nowrap;">
+      triangle
     </div>
   </div>
 </div>
-<!-- ######################## Background ############################# -->
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pattern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Pattern localization and classification.
+</figcaption>
+</figure>
+</div>
+</div></div>
+<!-- ######################## PAGE 9 ############################# -->
 </section></section>
 <section>
 <section id="background" class="title-slide slide level1 center">
@@ -594,7 +613,7 @@ Use pattern descriptions to characterize the types of shoes worn by a population
 <li><p>Automating the process: <a href="#/nn">neural networks</a></p></li>
 <li><p>Human making judgement: <a href="#/human">human recognition</a></p></li>
 <li><p>Do vision models recognize shapes the way humans do? <!-- (#nnhuman) --></p></li>
-<li><p>The coding can be very complicated:</p></li>
+<li><p>The coding of shoesoles is ambiguous</p></li>
 </ul>
 </div>
 <div>
@@ -603,7 +622,7 @@ Use pattern descriptions to characterize the types of shoes worn by a population
 <div class="quarto-layout-panel" data-layout-ncol="1">
 <div class="quarto-layout-row quarto-layout-valign-top">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
-<p><!-- ![](images/dc_circle_quad.png) --></p>
+<!-- ![](images/dc_circle_quad.png) -->
 </div>
 </div>
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -611,10 +630,10 @@ Use pattern descriptions to characterize the types of shoes worn by a population
 <div id="fig-solemate" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-solemate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="images/coding.png" height="300">
+<a href="images/coding.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;5: Example coding from the SoleMate user manual"><img data-src="images/coding.png" height="300"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-solemate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Example coding from the SoleMate user manual
+Figure&nbsp;5: Example coding from the SoleMate user manual
 </figcaption>
 </figure>
 </div>
@@ -644,15 +663,22 @@ Figure&nbsp;3: Example coding from the SoleMate user manual
 <div>
 <ul>
 <li><p>Frame the footwear characteristic identification problem as an object detection task</p></li>
-<li><p>Object detection architecture (Faster-RCNN, <span class="citation" data-cites="fasterrcnn">Ren et al. (<a href="#/reference" role="doc-biblioref" onclick="">2016</a>)</span>)</p></li>
+<li><p>Object detection architecture (Faster-RCNN, <span class="citation" data-cites="fasterrcnn">Ren et al. (<a href="#/average-precision" role="doc-biblioref" onclick="">2016</a>)</span>)</p></li>
 <li><p>Transfer learning</p></li>
 </ul>
 </div>
-
+<div id="fig-detection" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-detection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./images/dection_single.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;6: Object detection diagram"><img data-src="./images/dection_single.png"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-detection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Object detection diagram
+</figcaption>
+</figure>
+</div>
 <!-- ##################### project1 Data ################# -->
-<img data-src="./images/dection_single.png" class="r-stretch quarto-figure-center"><p class="caption">
-Figure&nbsp;4: Object detection diagram
-</p></section>
+</section>
 <section id="data" class="slide level2">
 <h2>Data</h2>
 <p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 2/7</span></p>
@@ -729,17 +755,16 @@ Figure&nbsp;4: Object detection diagram
     Annotation examples
   </figcaption>
 </figure>
-
 <div style="position: relative; top: -80px;">
 <div class="cell" data-fig-attr="style=&quot;transform: translateY(-80px);&quot;">
 <div class="cell-output-display">
 <div id="fig-class-distribution" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-class-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="prelim_files/figure-revealjs/fig-class-distribution-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;5: Number of annotations per class"><img data-src="prelim_files/figure-revealjs/fig-class-distribution-1.png" width="960"></a>
+<a href="prelim_files/figure-revealjs/fig-class-distribution-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;7: Number of annotations per class"><img data-src="prelim_files/figure-revealjs/fig-class-distribution-1.png" width="960"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Number of annotations per class
+Figure&nbsp;7: Number of annotations per class
 </figcaption>
 </figure>
 </div>
@@ -750,7 +775,7 @@ Figure&nbsp;5: Number of annotations per class
 <section id="experimental-setup" class="slide level2">
 <h2>Experimental Setup</h2>
 <p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 3/7</span></p>
-<p>A total of 4144 images in COCO style (<span class="citation" data-cites="coco">Lin et al. (<a href="#/reference" role="doc-biblioref" onclick="">2014</a>)</span>)</p>
+<p>A total of 4144 images in COCO style (<span class="citation" data-cites="coco">Lin et al. (<a href="#/average-precision" role="doc-biblioref" onclick="">2014</a>)</span>)</p>
 <div>
 <ul>
 <li>Data Split
@@ -761,8 +786,8 @@ Figure&nbsp;5: Number of annotations per class
 </ul></li>
 <li>Training
 <ul>
-<li>Default Pytorch model (backbone ResNet50 <span class="citation" data-cites="hyperparameter">Smith (<a href="#/reference" role="doc-biblioref" onclick="">2018</a>)</span>)</li>
-<li>Hyperparameters suggested by Pytorch (<span class="citation" data-cites="hyperparameter_py">Torchvision Contributors (<a href="#/reference" role="doc-biblioref" onclick="">n.d.</a>)</span>))</li>
+<li>Default Pytorch model (backbone ResNet50 <span class="citation" data-cites="hyperparameter">Smith (<a href="#/average-precision" role="doc-biblioref" onclick="">2018</a>)</span>)</li>
+<li>Hyperparameters suggested by Pytorch (<span class="citation" data-cites="hyperparameter_py">Torchvision Contributors (<a href="#/average-precision" role="doc-biblioref" onclick="">n.d.</a>)</span>))</li>
 <li>200 epochs</li>
 <li>batch size of 2</li>
 </ul></li>
@@ -789,10 +814,10 @@ Figure&nbsp;5: Number of annotations per class
 </ul>
 </div>
 </div><div class="column" style="width:40%;">
-<p><img data-src="images/iou.png"></p>
+
 </div></div>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Source: <sup>[1]</sup><span class="citation" data-cites="hyperparameter_py">Torchvision Contributors (<a href="#/reference" role="doc-biblioref" onclick="">n.d.</a>)</span></p>
+<p>Source: <sup>[1]</sup><span class="citation" data-cites="hyperparameter_py">Torchvision Contributors (<a href="#/average-precision" role="doc-biblioref" onclick="">n.d.</a>)</span></p>
 </div>
 </section>
 <section id="improper-metric" class="slide level2">
@@ -803,8 +828,8 @@ Figure&nbsp;5: Number of annotations per class
 <div class="column" style="width:50%;">
 <div class="r-stack">
 <p>caption does not follow image change</p>
-<p><img data-src="images/whynew21.png" class="fragment fade-out" data-fragment-index="0" height="700"></p>
-<p><img data-src="images/newmetric.png" class="fragment" data-fragment-index="0" height="450"></p>
+<p><a href="images/whynew21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="images/whynew21.png" class="fragment fade-out" data-fragment-index="0" height="700"></a></p>
+<p><a href="images/newmetric.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="images/newmetric.png" class="fragment" data-fragment-index="0" height="450"></a></p>
 </div>
 </div><div class="column" style="width:50%;">
 <ul>
@@ -919,9 +944,9 @@ Figure&nbsp;5: Number of annotations per class
 <li>Consider all prediceted boxes</li>
 <li>Less strict on localization</li>
 </ul>
-<p><img data-src="images/newmetric.png" height="300"></p>
+<p><a href="images/newmetric.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="images/newmetric.png" height="300"></a></p>
 </div><div class="column" style="width:60%;">
-<p><img data-src="images/new_estimate.png" height="500"></p>
+<p><a href="images/new_estimate.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="images/new_estimate.png" height="500"></a></p>
 </div></div>
 </div>
 </section>
@@ -937,10 +962,10 @@ Figure&nbsp;5: Number of annotations per class
 <li>Accuracy=0.33</li>
 </ul></li>
 </ul>
-<p><img data-src="images/confusion.png"></p>
+<p><a href="images/confusion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="images/confusion.png"></a></p>
 </div><div class="column" style="width:60%;">
 <p>Revisit the output: quad and triangle</p>
-<p><img data-src="images/whynew21.png" height="600"></p>
+<p><a href="images/whynew21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="images/whynew21.png" height="600"></a></p>
 </div></div>
 </div>
 </section></section>
@@ -955,8 +980,8 @@ Figure&nbsp;5: Number of annotations per class
 <div>
 <ul>
 <li>How do the networks perform on classifying geometric shapes?</li>
-<li>Do the network architectures biased to some geometric shape?</li>
-<li>How do the networks activated differently when classifying?</li>
+<li>Are these network architectures biased toward certain geometric shapes?</li>
+<li>How do the activation patterns differ between the networks during classification??</li>
 <li>What are the factors impacting the decisions?</li>
 </ul>
 </div>
@@ -985,7 +1010,7 @@ Figure&nbsp;5: Number of annotations per class
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/proj2-1.png" height="200"></p>
+<p><a href="images/proj2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Training"><img data-src="images/proj2-1.png" height="200" alt="Training"></a></p>
 <figcaption>Training</figcaption>
 </figure>
 </div>
@@ -993,7 +1018,7 @@ Figure&nbsp;5: Number of annotations per class
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/proj2-22.png" height="200"></p>
+<p><a href="images/proj2-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="test-1"><img data-src="images/proj2-22.png" height="200" alt="test-1"></a></p>
 <figcaption>test-1</figcaption>
 </figure>
 </div>
@@ -1001,7 +1026,7 @@ Figure&nbsp;5: Number of annotations per class
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/proj2-3.png" height="200"></p>
+<p><a href="images/proj2-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="test-2"><img data-src="images/proj2-3.png" height="200" alt="test-2"></a></p>
 <figcaption>test-2</figcaption>
 </figure>
 </div>
@@ -1021,16 +1046,16 @@ Figure&nbsp;5: Number of annotations per class
 <ul>
 <li class="fragment">Explore whether neural networks can learn abstract shape representation.</li>
 <li class="fragment">Identify the factors that impact the decisions of neural networks in polygon classification tasks using statistical study.</li>
-<li class="fragment">Provide recommended architecture for forencis footwear related tasks.</li>
+<li class="fragment">Provide recommended architecture for forensic footwear related tasks.</li>
 </ul>
 </section></section>
 <section>
-<section id="questions" class="title-slide slide level1 center">
-<h1><span style="font-size: 132px;">Questions?</span></h1>
-
+<section id="questions-and-comments" class="title-slide slide level1 center">
+<h1><span style="font-size: 132px;">Questions and comments</span></h1>
+<!-- ######################## PAGE 25 ############################# -->
 </section>
 <section id="nn" class="slide level2">
-<h2>Neural networks can process images for various tasks</h2>
+<h2>Neural Networks Process Images for Various Tasks</h2>
 <p>Train with annotated data to get optimal weights in both the backbone and the head for specific tasks</p>
 <style>
   .rac-layout {
@@ -1095,7 +1120,7 @@ Figure&nbsp;5: Number of annotations per class
   .rac-banner {
   width: 80%;
   height: 400px;
-  margin: -228px 0 0;
+  margin: -300px 0 0;
 }
   .rac-banner {
   position: relative;
@@ -1136,17 +1161,17 @@ Figure&nbsp;5: Number of annotations per class
     </div>
 
     <div class="rac-photo fragment" data-fragment-index="0" style="--x: 20%; --y: 170px; --w: 60%; --h: 100px;">
-      <img src="images/bird2.jpg" alt="特征二">
+      <img src="images/bird2.jpg" alt="bird2">
       <span class="rac-photo-name">Blue Jay 0.05</span>
     </div>
 
     <div class="rac-photo fragment" data-fragment-index="0" style="--x: 20%; --y: 290px; --w: 60%; --h: 115px;">
-      <img src="images/bird3.jpg" alt="特征三">
+      <img src="images/bird3.jpg" alt="bird3">
       <span class="rac-photo-name">House finch 0.15</span>
     </div>
 
     <div class="rac-photo fragment" data-fragment-index="1" style="--x: 20%; --y: 410px; --w: 60%; --h: 300px;">
-      <img src="images/bird4.jpg" alt="特征四">
+      <img src="images/bird4.jpg" alt="bird4">
       <div class="rac-box" style="left: 28%; top: 30%; width: 20%; height: 15%;">
         <span class="rac-label">House finch</span>
       </div>
@@ -1173,24 +1198,21 @@ Figure&nbsp;5: Number of annotations per class
 </div>
 
 <div class="rac-banner">
-  <img src="images/nn-diagram.png" alt="鞋底全景">
+  <img src="images/nn-diagram.png" alt="diagram">
 
   <div class="rac-cover fragment fade-out" data-fragment-index="0" style="left: 58.7%; top: 5%; width: 43%; height: 50%;"></div>
 
   <div class="rac-cover fragment fade-out" data-fragment-index="1" style="left: 58.7%; top: 55%; width: 43%; height: 50%;"></div>
 </div>
-<!-- <div class="rac-photo-source fragment"> -->
-<!--       Source：<a href="ImageNet.com">ImageNet</a> -->
-<!--     </div> -->
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Source: <span class="citation" data-cites="deng2009imagenet">Deng et al. (<a href="#/reference" role="doc-biblioref" onclick="">2009</a>)</span></p>
+<p>Image source: <span class="citation" data-cites="deng2009imagenet">Deng et al. (<a href="#/average-precision" role="doc-biblioref" onclick="">2009</a>)</span></p>
 </div>
 </section>
 <section id="model-training-and-transfer-learning" class="slide level2">
 <h2>Model Training and Transfer Learning</h2>
 <p><span style="font-size: 0.55em; color: #64748b;">Background · Neural network · 2/3</span></p>
 <ul>
-<li class="fragment">AlexNet 59.3% accuracy <span class="citation" data-cites="alexnet">(<a href="#/reference" role="doc-biblioref" onclick="">Krizhevsky, Sutskever, and Hinton 2012</a>)</span></li>
+<li class="fragment">AlexNet 59.3% accuracy <span class="citation" data-cites="alexnet">(<a href="#/average-precision" role="doc-biblioref" onclick="">Krizhevsky, Sutskever, and Hinton 2012</a>)</span></li>
 <li class="fragment">Training from scratch is expensive and requires large training data<br>
 <!-- * 5–6 days on two NVIDIA GTX 580 GPUs running in parallel, for a total of approximately 240–288 GPU-hours. -->
 <ul>
@@ -1198,7 +1220,7 @@ Figure&nbsp;5: Number of annotations per class
 </ul></li>
 <li class="fragment">Reuse the backbone
 <ul>
-<li class="fragment">Initializing with transferred <br> features can improve generalization <br> performance <span class="citation" data-cites="transfer-learning">(<a href="#/reference" role="doc-biblioref" onclick="">Yosinski et al. 2014</a>)</span></li>
+<li class="fragment">Initializing with transferred <br> features can improve generalization <br> performance <span class="citation" data-cites="transfer-learning">(<a href="#/average-precision" role="doc-biblioref" onclick="">Yosinski et al. 2014</a>)</span></li>
 </ul></li>
 </ul>
 <figure style="position: absolute; right: 10px; bottom: 5px; width: 520px;">
@@ -1214,7 +1236,7 @@ Figure&nbsp;5: Number of annotations per class
   </div>
 </div></figure>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Source: <span class="citation" data-cites="abstract">Zeiler and Fergus (<a href="#/reference" role="doc-biblioref" onclick="">2014</a>)</span></p>
+<p>Image source: <span class="citation" data-cites="abstract">Zeiler and Fergus (<a href="#/average-precision" role="doc-biblioref" onclick="">2014</a>)</span></p>
 </div>
 <!-- ```{=html} -->
 <!-- <div style="position: absolute; right: 10px; bottom: 5px; width: 620px;"> -->
@@ -1257,18 +1279,35 @@ Figure&nbsp;5: Number of annotations per class
 
   <figure style="margin: -200px 0 0; text-align: center;">
     <img src="images/mycnn.png" alt="" style="display: block; width: 100%; height: 220px;
-                object-fit: contain; object-position: center bottom; margin: 0;">
+                object-fit: contain; object-position: center bottom; margin: 0; cursor: zoom-in" onclick="document.getElementById('zoom-image-1').showModal()">
+     <dialog id="zoom-image-1" onclick="this.close()" style="max-width:95vw; max-height:95vh; padding:0; border:0;
+               background:transparent; cursor:zoom-out;">
+        <img src="images/mycnn.png" style="display:block; max-width:90vw; max-height:90vh;
+             width:auto; height:auto;">
+    </dialog>           
+    <style>
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.8) !important;
+          }
+    </style>            
+                
     <figcaption style="margin-top: 4px; font-size: 16px;">CNN diagram</figcaption>
   </figure>
 
   <figure style="margin: -200px 0 0; text-align: center;">
     <img src="images/myvit.png" alt="" style="display: block; width: 100%; height: 220px;
-                object-fit: contain; object-position: center bottom; margin: 0;">
+                object-fit: contain; object-position: center bottom; margin: 0; cursor: zoom-in" onclick="document.getElementById('zoom-image-1').showModal()">
+      <dialog id="zoom-image-1" onclick="this.close()" style="max-width:95vw; max-height:95vh; padding:0; border:0;
+               background:transparent; cursor:zoom-out;">
+        <img src="images/mycnn.png" style="display:block; max-width:90vw; max-height:90vh;
+             width:auto; height:auto;">
+    </dialog>           
+    
     <figcaption style="margin-top: 4px; font-size: 16px;">ViT Diagram</figcaption>
   </figure>
 </div>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Source: <span class="citation" data-cites="transformer">Vaswani et al. (<a href="#/reference" role="doc-biblioref" onclick="">2017</a>)</span> <span class="citation" data-cites="vit">Dosovitskiy et al. (<a href="#/reference" role="doc-biblioref" onclick="">2020</a>)</span></p>
+<p>Source: <span class="citation" data-cites="transformer">Vaswani et al. (<a href="#/average-precision" role="doc-biblioref" onclick="">2017</a>)</span> <span class="citation" data-cites="vit">Dosovitskiy et al. (<a href="#/average-precision" role="doc-biblioref" onclick="">2020</a>)</span></p>
 </div>
 <div style="position: absolute; left: 20px; bottom: 14px; font-size: 16px;">
 <p><a href="#/background-menu">← Background</a></p>
@@ -1292,7 +1331,7 @@ Figure&nbsp;5: Number of annotations per class
 <!-- ::: -->
 <p><img data-src="images/Neocognition-1.png"> <img data-src="images/hubel_circle.png" style="transform: translateX(100px);" width="800"></p>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Source: <span class="citation" data-cites="Hubel1962">Awang (<a href="#/reference" role="doc-biblioref" onclick="">1962</a>)</span> <span class="citation" data-cites="fukushima1980neocognitron">Fukushima (<a href="#/reference" role="doc-biblioref" onclick="">1980</a>)</span> <span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/reference" role="doc-biblioref" onclick="">2003</a>)</span></p>
+<p>Source: <span class="citation" data-cites="Hubel1962">Awang (<a href="#/average-precision" role="doc-biblioref" onclick="">1962</a>)</span> <span class="citation" data-cites="fukushima1980neocognitron">Fukushima (<a href="#/average-precision" role="doc-biblioref" onclick="">1980</a>)</span> <span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/average-precision" role="doc-biblioref" onclick="">2003</a>)</span></p>
 </div>
 <div class="fragment" style="position: absolute; left: 20px; right: 20px; bottom: 20px; font-size: 40px; text-align: center;">
 <p>But there’s more</p>
@@ -1333,15 +1372,14 @@ Figure&nbsp;5: Number of annotations per class
               min-width: 0; color: #111;">
 
     <h3 style="margin: 50 0 12px; font-size: 48px;">
-<p>Gestalt Principles (<span class="citation" data-cites="gestalt">Koffka (<a href="#/reference" role="doc-biblioref" onclick="">1935</a>)</span>)</p>
+<p>Gestalt Principles (<span class="citation" data-cites="gestalt">Koffka (<a href="#/average-precision" role="doc-biblioref" onclick="">1935</a>)</span>)</p>
 </h3>
 
     <ul style="margin-top: 0;">
       <li>
-<p>Illusory contour is not physically present but is filled by the visual system (<span class="citation" data-cites="kanizsa">Kanizsa (<a href="#/reference" role="doc-biblioref" onclick="">1976</a>)</span>)</p>
+<p>Illusory contour is not physically present but is filled by the visual system (<span class="citation" data-cites="kanizsa">Kanizsa (<a href="#/average-precision" role="doc-biblioref" onclick="">1976</a>)</span>)</p>
 </li>
-      <!-- <li>左侧第二条内容</li> -->
-      <!-- <li>左侧第三条内容</li> -->
+      
     </ul>
 
     <figure style="margin: 30px 10px 0; text-align: center;">
@@ -1364,10 +1402,9 @@ Figure&nbsp;5: Number of annotations per class
 
     <ul style="margin-top: 0;">
       <li>
-<p>Shape discrimination relies on both local curvature information and the global organization of that information (<span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/reference" role="doc-biblioref" onclick="">2003</a>)</span>).</p>
+<p>Shape discrimination relies on both local curvature information and the global organization of that information (<span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/average-precision" role="doc-biblioref" onclick="">2003</a>)</span>).</p>
 </li>
-      <!-- <li>右侧第二条内容</li> -->
-      <!-- <li>右侧第三条内容</li> -->
+      
     </ul>
 
     <figure style="margin: auto 0 0; text-align: center;">
@@ -1383,7 +1420,7 @@ Figure&nbsp;5: Number of annotations per class
 
 </div>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Source: @<span class="citation" data-cites="kanizsa">Kanizsa (<a href="#/reference" role="doc-biblioref" onclick="">1976</a>)</span> <span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/reference" role="doc-biblioref" onclick="">2003</a>)</span></p>
+<p>Source: @<span class="citation" data-cites="kanizsa">Kanizsa (<a href="#/average-precision" role="doc-biblioref" onclick="">1976</a>)</span> <span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/average-precision" role="doc-biblioref" onclick="">2003</a>)</span></p>
 </div>
 <div class="fragment" style="position: absolute; left: 20px; right: 20px; bottom: 20px; font-size: 40px; text-align: center;">
 <!-- Organizing features by both local and global information,  -->
@@ -1393,8 +1430,14 @@ Figure&nbsp;5: Number of annotations per class
 <p><a href="#/background-menu">← Background</a></p>
 </div>
 </section></section>
-<section id="reference" class="title-slide slide level1 smaller scrollable">
+<section id="reference" class="title-slide slide level1 center">
 <h1>Reference</h1>
+
+</section>
+
+<section id="average-precision" class="title-slide slide level1 smaller scrollable" data-visibility="uncounted">
+<h1>Average precision</h1>
+<p><a href="images/iou.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="images/iou.png"></a></p>
 <!-- # Appendix -->
 <!-- ![](images/trainingloss.png) -->
 <div class="quarto-auto-generated-content">
@@ -1504,7 +1547,7 @@ Zeiler, Matthew D, and Rob Fergus. 2014. <span>“Visualizing and Understanding 
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -1888,7 +1931,7 @@ Zeiler, Matthew D, and Rob Fergus. 2014. <span>“Visualizing and Understanding 
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
