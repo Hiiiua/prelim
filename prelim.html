@@ -436,7 +436,7 @@ Muxin Hua <br> <span style="font-size: 0.7em;">Advisors: Dr.&nbsp;Susan VanderPl
 <div>
 
 </div>
-<div class="compact-figures quarto-layout-panel" style="margin-top: -30px;; padding: 6px 12px; border-radius: 10px;" data-layout-ncol="1">
+<div class="compact-figures quarto-layout-panel" data-layout-ncol="1" style="margin-top: -30px;; padding: 6px 12px; border-radius: 10px;">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
 <div id="fig-design" class="lightbox quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
@@ -544,7 +544,7 @@ Figure&nbsp;2: Specific outsole design differences across sizes within the same 
 </ul>
 </div><div class="column" style="width:40%;">
 <div class="fragment" data-fragment-index="0" style="background: #ffffff; border-radius: 10px; padding: 46px;">
-<div id="fig-scanner" class="quarto-float quarto-figure quarto-figure-center" alt="Collect" style="height: 600px; object-fit: contain;">
+<div id="fig-scanner" class="quarto-float quarto-figure quarto-figure-center" style="height: 600px; object-fit: contain;" alt="Collect">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-scanner-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <a href="images/scanner.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Figure&nbsp;3: A scanner for shoesole data collection"><img data-src="images/scanner.png" style="height: 600px; object-fit: contain;;width:100.0%" alt="Collect"></a>
@@ -1056,7 +1056,11 @@ Figure&nbsp;7: Number of annotations per class
 </section>
 <section id="nn" class="slide level2">
 <h2>Neural Networks Process Images for Various Tasks</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Background · Neural network · 1/2</span></p>
 <p>Train with annotated data to get optimal weights in both the backbone and the head for specific tasks</p>
+<div id="fig-nndiagram" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-nndiagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <style>
   .rac-layout {
     display: grid;
@@ -1143,11 +1147,27 @@ Figure&nbsp;7: Number of annotations per class
   line-height: 1.2;
   color: #555;
 }
+
+.reveal #fig-example {
+  text-align: left;
+}
+
+.reveal #fig-example .rac-layout ul {
+  display: block;
+  margin: 0 !important;
+  padding-left: 1.2em !important;
+  list-style-position: outside;
+}
+
+.reveal #fig-example .rac-layout li {
+  margin-left: 0;
+  padding-left: 0;
+}
 </style>
 
 <div class="rac-layout">
   <div>
-    <ul>
+    <ul style="position: relative; z-index: 1;">
       <li class="fragment" data-fragment-index="0">Classification</li>
       <li class="fragment" data-fragment-index="1">Object detection</li>
       <!-- <li class="fragment" data-fragment-index="2"> </li> -->
@@ -1155,22 +1175,22 @@ Figure&nbsp;7: Number of annotations per class
   </div>
 
   <div class="rac-rail">
-    <div class="rac-photo fragment" data-fragment-index="0" style="--x: 20%; --y: 50px; --w: 60%; --h: 100px;">
+    <div class="rac-photo fragment" data-fragment-index="0" style="--x: 20%; --y: -30px; --w: 60%; --h: 100px;">
       <img src="images/bird1.jpg" alt="bird1">
       <span class="rac-photo-name">Robin 0.8</span>
     </div>
 
-    <div class="rac-photo fragment" data-fragment-index="0" style="--x: 20%; --y: 170px; --w: 60%; --h: 100px;">
+    <div class="rac-photo fragment" data-fragment-index="0" style="--x: 20%; --y: 90px; --w: 60%; --h: 100px;">
       <img src="images/bird2.jpg" alt="bird2">
       <span class="rac-photo-name">Blue Jay 0.05</span>
     </div>
 
-    <div class="rac-photo fragment" data-fragment-index="0" style="--x: 20%; --y: 290px; --w: 60%; --h: 115px;">
+    <div class="rac-photo fragment" data-fragment-index="0" style="--x: 20%; --y: 210px; --w: 60%; --h: 115px;">
       <img src="images/bird3.jpg" alt="bird3">
       <span class="rac-photo-name">House finch 0.15</span>
     </div>
 
-    <div class="rac-photo fragment" data-fragment-index="1" style="--x: 20%; --y: 410px; --w: 60%; --h: 300px;">
+    <div class="rac-photo fragment" data-fragment-index="1" style="--x: 20%; --y: 300px; --w: 60%; --h: 300px;">
       <img src="images/bird4.jpg" alt="bird4">
       <div class="rac-box" style="left: 28%; top: 30%; width: 20%; height: 15%;">
         <span class="rac-label">House finch</span>
@@ -1198,11 +1218,18 @@ Figure&nbsp;7: Number of annotations per class
 </div>
 
 <div class="rac-banner">
-  <img src="images/nn-diagram.png" alt="diagram">
+  <img src="images/nn-diagram.png" alt="diagram" style="position: relative; z-index: 0;">
+  
 
   <div class="rac-cover fragment fade-out" data-fragment-index="0" style="left: 58.7%; top: 5%; width: 43%; height: 50%;"></div>
 
   <div class="rac-cover fragment fade-out" data-fragment-index="1" style="left: 58.7%; top: 55%; width: 43%; height: 50%;"></div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nndiagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Neural network diagram
+</figcaption>
+</figure>
 </div>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
 <p>Image source: <span class="citation" data-cites="deng2009imagenet">Deng et al. (<a href="#/average-precision" role="doc-biblioref" onclick="">2009</a>)</span></p>
@@ -1210,108 +1237,120 @@ Figure&nbsp;7: Number of annotations per class
 </section>
 <section id="model-training-and-transfer-learning" class="slide level2">
 <h2>Model Training and Transfer Learning</h2>
-<p><span style="font-size: 0.55em; color: #64748b;">Background · Neural network · 2/3</span></p>
+<p><span style="font-size: 0.55em; color: #64748b;">Background · Neural network · 2/2</span></p>
 <ul>
-<li class="fragment">AlexNet 59.3% accuracy <span class="citation" data-cites="alexnet">(<a href="#/average-precision" role="doc-biblioref" onclick="">Krizhevsky, Sutskever, and Hinton 2012</a>)</span></li>
 <li class="fragment">Training from scratch is expensive and requires large training data<br>
 <!-- * 5–6 days on two NVIDIA GTX 580 GPUs running in parallel, for a total of approximately 240–288 GPU-hours. -->
 <ul>
 <li class="fragment">ImageNet: 1.2 million images, 1000 classes</li>
 </ul></li>
+<li class="fragment">AlexNet 59.3% accuracy <span class="citation" data-cites="alexnet">(<a href="#/average-precision" role="doc-biblioref" onclick="">Krizhevsky, Sutskever, and Hinton 2012</a>)</span></li>
+<li class="fragment">Accuracy: percentage of correct predictions (50k test images)</li>
 <li class="fragment">Reuse the backbone
 <ul>
 <li class="fragment">Initializing with transferred <br> features can improve generalization <br> performance <span class="citation" data-cites="transfer-learning">(<a href="#/average-precision" role="doc-biblioref" onclick="">Yosinski et al. 2014</a>)</span></li>
 </ul></li>
 </ul>
-<figure style="position: absolute; right: 10px; bottom: 5px; width: 520px;">
-  <div style="position: relative;">
+<div id="fig-backbone" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-backbone-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
   <img src="images/abstract.png" style="display: block; width: 100%; height: auto; max-width: none; max-height: none; margin: 0;">
-  
-  <figcaption style="margin: 2px 0 0; font-size: 16px; line-height: 1.25; text-align: center;">
-    A pretrained backbone can be used to extract features
-  </figcaption>
+</div>
 
-  <div style="margin-top: 4px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-    <!-- Source: <a href="https://example.com">Author (Year), Fig. 2</a> -->
-  </div>
-</div></figure>
+<style>
+  #fig-backbone {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    width: 520px;
+    margin: 0;
+  }
+
+  #fig-backbone figcaption {
+    margin: 2px 0 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.25;
+    text-align: center;
+  }
+</style>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-backbone-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: A pretrained backbone can be used to extract features
+</figcaption>
+</figure>
+</div>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
 <p>Image source: <span class="citation" data-cites="abstract">Zeiler and Fergus (<a href="#/average-precision" role="doc-biblioref" onclick="">2014</a>)</span></p>
 </div>
+<!-- ## Two Categories of Vision Models -->
+<!-- [Background · Neural network · 3/3]{style="font-size: 0.55em; color: #64748b;"} -->
 <!-- ```{=html} -->
-<!-- <div style="position: absolute; right: 10px; bottom: 5px; width: 620px;"> -->
-<!-- Source: <a href="https://example.com">Author (Year), Fig. 2</a> -->
-<!--   <img src="images/abstract.png" alt="示例图" -->
-<!--        style="display: block; width: 100%; height: auto; max-width: none; max-height: none; margin: 0;"> -->
-<!--        <figcaption style="margin-top: 6px; text-align: center; font-size: 16px; line-height: 1.2;"> -->
-<!--     A pretrained backbone can be used to extract features [@abstract] -->
-<!--   </figcaption> -->
+<!-- <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); -->
+<!--             column-gap: 98px; row-gap: 150px;"> -->
+<!--   <div> -->
+<!--     <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;"> -->
+<!--     Convolutional neural network (CNN) -->
+<!--     </h3> -->
+<!--     <ul> -->
+<!--       <li>Biological inspired hierarchical model</li> -->
+<!--       <li>Local features are integrated into more complex features</li> -->
+<!--       <li>Assumes locality + translation equivariance </li> -->
+<!--     </ul> -->
+<!--   </div> -->
+<!--   <div> -->
+<!--     <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;"> -->
+<!--     Vision Transformer (ViT) -->
+<!--     </h3> -->
+<!--     <ul> -->
+<!--       <li>Modeling globally</li> -->
+<!--       <li>Global context</li> -->
+<!--     </ul> -->
+<!--   </div> -->
+<!--   <figure style="margin: -200px 0 0; text-align: center;"> -->
+<!--     <img src="images/mycnn.png" alt="" -->
+<!--          style="display: block; width: 100%; height: 220px; -->
+<!--                 object-fit: contain; object-position: center bottom; margin: 0; cursor: zoom-in" -->
+<!--                 onclick="document.getElementById('zoom-image-1').showModal()"> -->
+<!--      <dialog id="zoom-image-1" -->
+<!--         onclick="this.close()" -->
+<!--         style="max-width:95vw; max-height:95vh; padding:0; border:0; -->
+<!--                background:transparent; cursor:zoom-out;"> -->
+<!--         <img src="images/mycnn.png" -->
+<!--           style="display:block; max-width:90vw; max-height:90vh; -->
+<!--              width:auto; height:auto;"> -->
+<!--     </dialog>            -->
+<!--     <style> -->
+<!--       dialog::backdrop { -->
+<!--         background: rgba(0, 0, 0, 0.8) !important; -->
+<!--           } -->
+<!--     </style>             -->
+<!--     <figcaption style="margin-top: 4px; font-size: 16px;">CNN diagram</figcaption> -->
+<!--   </figure> -->
+<!--   <figure style="margin: -200px 0 0; text-align: center;"> -->
+<!--     <img src="images/myvit.png" alt="" -->
+<!--          style="display: block; width: 100%; height: 220px; -->
+<!--                 object-fit: contain; object-position: center bottom; margin: 0; cursor: zoom-in" -->
+<!--                 onclick="document.getElementById('zoom-image-1').showModal()"> -->
+<!--       <dialog id="zoom-image-1" -->
+<!--         onclick="this.close()" -->
+<!--         style="max-width:95vw; max-height:95vh; padding:0; border:0; -->
+<!--                background:transparent; cursor:zoom-out;"> -->
+<!--         <img src="images/mycnn.png" -->
+<!--           style="display:block; max-width:90vw; max-height:90vh; -->
+<!--              width:auto; height:auto;"> -->
+<!--     </dialog>            -->
+<!--     <figcaption style="margin-top: 4px; font-size: 16px;">ViT Diagram</figcaption> -->
+<!--   </figure> -->
 <!-- </div> -->
 <!-- ``` -->
-<!-- ![A pretrained backbone can be used to extract features [@abstract] ](images/abstract.png) -->
-<!-- {.absolute right=-300 bottom=20 width=380} -->
-</section>
-<section id="two-categories-of-vision-models" class="slide level2">
-<h2>Two Categories of Vision Models</h2>
-<p><span style="font-size: 0.55em; color: #64748b;">Background · Neural network · 3/3</span></p>
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-            column-gap: 98px; row-gap: 150px;">
-  <div>
-    <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;">
-    Convolutional neural network (CNN)
-    </h3>
-    <ul>
-      <li>Biological inspired hierarchical model</li>
-      <li>Local features are integrated into more complex features</li>
-      <li>Assumes locality + translation equivariance </li>
-    </ul>
-  </div>
-
-  <div>
-    <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;">
-    Vision Transformer (ViT)
-    </h3>
-    <ul>
-      <li>Modeling globally</li>
-      <li>Global context</li>
-    </ul>
-  </div>
-
-  <figure style="margin: -200px 0 0; text-align: center;">
-    <img src="images/mycnn.png" alt="" style="display: block; width: 100%; height: 220px;
-                object-fit: contain; object-position: center bottom; margin: 0; cursor: zoom-in" onclick="document.getElementById('zoom-image-1').showModal()">
-     <dialog id="zoom-image-1" onclick="this.close()" style="max-width:95vw; max-height:95vh; padding:0; border:0;
-               background:transparent; cursor:zoom-out;">
-        <img src="images/mycnn.png" style="display:block; max-width:90vw; max-height:90vh;
-             width:auto; height:auto;">
-    </dialog>           
-    <style>
-      dialog::backdrop {
-        background: rgba(0, 0, 0, 0.8) !important;
-          }
-    </style>            
-                
-    <figcaption style="margin-top: 4px; font-size: 16px;">CNN diagram</figcaption>
-  </figure>
-
-  <figure style="margin: -200px 0 0; text-align: center;">
-    <img src="images/myvit.png" alt="" style="display: block; width: 100%; height: 220px;
-                object-fit: contain; object-position: center bottom; margin: 0; cursor: zoom-in" onclick="document.getElementById('zoom-image-1').showModal()">
-      <dialog id="zoom-image-1" onclick="this.close()" style="max-width:95vw; max-height:95vh; padding:0; border:0;
-               background:transparent; cursor:zoom-out;">
-        <img src="images/mycnn.png" style="display:block; max-width:90vw; max-height:90vh;
-             width:auto; height:auto;">
-    </dialog>           
-    
-    <figcaption style="margin-top: 4px; font-size: 16px;">ViT Diagram</figcaption>
-  </figure>
-</div>
-<div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Source: <span class="citation" data-cites="transformer">Vaswani et al. (<a href="#/average-precision" role="doc-biblioref" onclick="">2017</a>)</span> <span class="citation" data-cites="vit">Dosovitskiy et al. (<a href="#/average-precision" role="doc-biblioref" onclick="">2020</a>)</span></p>
-</div>
-<div style="position: absolute; left: 20px; bottom: 14px; font-size: 16px;">
-<p><a href="#/background-menu">← Background</a></p>
-</div>
+<!-- ::: {style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;"} -->
+<!-- Source: @transformer @vit -->
+<!-- ::: -->
+<!-- ::: {style="position: absolute; left: 20px; bottom: 14px; font-size: 16px;"} -->
+<!-- [← Background](#background-menu) -->
+<!-- ::: -->
 </section>
 <section id="human" class="slide level2">
 <h2>Hubel and Wiesel Biological Vision Model</h2>
@@ -1323,12 +1362,6 @@ Figure&nbsp;7: Number of annotations per class
 <li>Local features are eventually integrated into information for recognition</li>
 </ul>
 </div>
-<!-- :::{.nonincremental} -->
-<!-- * Retina: electric impulses        -->
-<!-- * Retinal/Lateral geniculate nucleus (LGN): respond to local contrast -->
-<!-- * Visual area: combine prior signals into more complex visual patterns -->
-<!-- * association area: integrate information for recognition -->
-<!-- ::: -->
 <p><img data-src="images/Neocognition-1.png"> <img data-src="images/hubel_circle.png" style="transform: translateX(100px);" width="800"></p>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
 <p>Source: <span class="citation" data-cites="Hubel1962">Awang (<a href="#/average-precision" role="doc-biblioref" onclick="">1962</a>)</span> <span class="citation" data-cites="fukushima1980neocognitron">Fukushima (<a href="#/average-precision" role="doc-biblioref" onclick="">1980</a>)</span> <span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/average-precision" role="doc-biblioref" onclick="">2003</a>)</span></p>
@@ -1452,9 +1485,6 @@ Awang, Adriawan. 1962. <span>“Receptive Fields, Binocular Interaction and Func
 <div id="ref-deng2009imagenet" class="csl-entry" role="listitem">
 Deng, Jia, Wei Dong, Richard Socher, Li-Jia Li, Kai Li, and Li Fei-Fei. 2009. <span>“Imagenet: A Large-Scale Hierarchical Image Database.”</span> In <em>2009 IEEE Conference on Computer Vision and Pattern Recognition</em>, 248–55. Ieee.
 </div>
-<div id="ref-vit" class="csl-entry" role="listitem">
-Dosovitskiy, Alexey, Lucas Beyer, Alexander Kolesnikov, Dirk Weissenborn, Xiaohua Zhai, Thomas Unterthiner, Mostafa Dehghani, et al. 2020. <span>“An Image Is Worth 16x16 Words: Transformers for Image Recognition at Scale.”</span> <em>arXiv Preprint arXiv:2010.11929</em>.
-</div>
 <div id="ref-fukushima1980neocognitron" class="csl-entry" role="listitem">
 Fukushima, Kunihiko. 1980. <span>“Neocognitron: A Self-Organizing Neural Network Model for a Mechanism of Pattern Recognition Unaffected by Shift in Position.”</span> <em>Biological Cybernetics</em> 36 (4): 193–202.
 </div>
@@ -1484,9 +1514,6 @@ Smith, Leslie N. 2018. <span>“A Disciplined Approach to Neural Network Hyper-P
 </div>
 <div id="ref-hyperparameter_py" class="csl-entry" role="listitem">
 Torchvision Contributors. n.d. <span>“Torchvision Object Detection Training Reference.”</span> GitHub repository. <a href="https://github.com/pytorch/vision/blob/main/references/detection/train.py">https://github.com/pytorch/vision/blob/main/references/detection/train.py</a>.
-</div>
-<div id="ref-transformer" class="csl-entry" role="listitem">
-Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. <span>“Attention Is All You Need.”</span> <em>Advances in Neural Information Processing Systems</em> 30.
 </div>
 <div id="ref-transfer-learning" class="csl-entry" role="listitem">
 Yosinski, Jason, Jeff Clune, Yoshua Bengio, and Hod Lipson. 2014. <span>“How Transferable Are Features in Deep Neural Networks?”</span> <em>Advances in Neural Information Processing Systems</em> 27.
@@ -1931,7 +1958,7 @@ Zeiler, Matthew D, and Rob Fergus. 2014. <span>“Visualizing and Understanding 
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false,"closeEffect":"zoom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
