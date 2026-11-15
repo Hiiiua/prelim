@@ -57,6 +57,8 @@
   <link href="prelim_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="prelim_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="prelim_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="prelim_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="prelim_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="prelim_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -376,19 +378,21 @@ Muxin Hua <br> <span style="font-size: 0.7em;">Advisors: Dr.&nbsp;Susan VanderPl
 <ul>
 <li><p>Motivation</p></li>
 <li><p>Background</p></li>
-<li><p>Preliminary result</p>
+<li><p>Project 1</p>
 <ul>
 <li>Object detection network performance in identifying footwear characteristics</li>
 </ul></li>
-<li><p>Moving forward <!-- * Classification network performance on challenging geometric patterns --> <!-- * Factors influencing polygon classification by neural networks --></p></li>
-<li><p>Questions</p></li>
+<li><p>Project 2 and project 3</p>
+<!-- * Classification network performance on challenging geometric patterns -->
+<!-- * Factors influencing polygon classification by neural networks --></li>
+<li><p>Questions and comments</p></li>
 </ul>
 </div>
 </section>
 
 <section>
 <section id="motivation" class="title-slide slide level1 center">
-<h1><span style="font-size: 132px;">Motivation</span></h1>
+<h1><span style="font-size: 92px;">Motivation</span></h1>
 <!-- ############################## page4 ####################### -->
 </section>
 <section id="forensic-footwear-evidence" class="slide level2">
@@ -408,7 +412,7 @@ Muxin Hua <br> <span style="font-size: 0.7em;">Advisors: Dr.&nbsp;Susan VanderPl
           display:block!important;
       }</style></aside>
 <div class="columns">
-<p><strong>Class Characteristic</strong> can provide association between a suspect and the scene <span class="citation" data-cites="hammer2018footwear">(<a href="#/average-precision" role="doc-biblioref" onclick="">Hammer 2018</a>)</span></p><div class="column" style="width:45%;">
+<p><strong>Class Characteristic</strong> can provide association between a suspect and the scene <span class="citation" data-cites="hammer2018footwear">(<a href="#/reference" role="doc-biblioref" onclick="">Hammer 2018</a>)</span></p><div class="column" style="width:45%;">
 <ul>
 <li class="fragment"><p>Outsole design</p></li>
 <li class="fragment"><p>Manufactured features</p></li>
@@ -436,7 +440,7 @@ Muxin Hua <br> <span style="font-size: 0.7em;">Advisors: Dr.&nbsp;Susan VanderPl
 <div>
 
 </div>
-<div class="compact-figures quarto-layout-panel" data-layout-ncol="1" style="margin-top: -30px;; padding: 6px 12px; border-radius: 10px;">
+<div class="compact-figures quarto-layout-panel" style="margin-top: -30px;; padding: 6px 12px; border-radius: 10px;" data-layout-ncol="1">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
 <div id="fig-design" class="lightbox quarto-float quarto-figure quarto-figure-center" data-fig-align="center">
@@ -473,7 +477,7 @@ Figure&nbsp;2: Specific outsole design differences across sizes within the same 
 </div>
 </div></div>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Image sources: 1 <span class="citation" data-cites="Adipure">(<a href="#/average-precision" role="doc-biblioref" onclick=""><strong>Adipure?</strong></a>)</span> <br> 2 <span class="citation" data-cites="hammer2018footwear">Hammer (<a href="#/average-precision" role="doc-biblioref" onclick="">2018</a>)</span></p>
+<p>Image sources: 1 <span class="citation" data-cites="Adipure">Adidas (<a href="#/reference" role="doc-biblioref" onclick="">n.d.</a>)</span> <br> 2 <span class="citation" data-cites="hammer2018footwear">Hammer (<a href="#/reference" role="doc-biblioref" onclick="">2018</a>)</span></p>
 </div>
 <!-- ##########################3####### New Slide ######################## -->
 </section>
@@ -602,7 +606,7 @@ Figure&nbsp;4: Pattern localization and classification.
 </section></section>
 <section>
 <section id="background" class="title-slide slide level1 center">
-<h1><span style="font-size: 132px;">Background</span></h1>
+<h1><span style="font-size: 92px;">Background</span></h1>
 
 </section>
 <section id="background-menu" class="slide level2">
@@ -650,408 +654,6 @@ Figure&nbsp;5: Example coding from the SoleMate user manual
 <li class="fragment">Network performance on challenging geometric patterns</li>
 <li class="fragment">Factors influencing neural network predictions</li>
 </ul>
-<!-- ####################### Project1 ##################################### -->
-</section></section>
-<section>
-<section id="project-1" class="title-slide slide level1 center">
-<h1><span style="font-size: 132px;">Project 1</span></h1>
-<p>Is the object detection network sufficient to automate footwear characteristic identification</p>
-</section>
-<section id="object-detection-architecture" class="slide level2">
-<h2>Object Detection Architecture</h2>
-<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 1/7</span></p>
-<div>
-<ul>
-<li><p>Frame the footwear characteristic identification problem as an object detection task</p></li>
-<li><p>Object detection architecture (Faster-RCNN, <span class="citation" data-cites="fasterrcnn">Ren et al. (<a href="#/average-precision" role="doc-biblioref" onclick="">2016</a>)</span>)</p></li>
-<li><p>Transfer learning</p></li>
-</ul>
-</div>
-<div id="fig-detection" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-detection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="./images/dection_single.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Figure&nbsp;6: Object detection diagram"><img data-src="./images/dection_single.png"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-detection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: Object detection diagram
-</figcaption>
-</figure>
-</div>
-<!-- ##################### project1 Data ################# -->
-</section>
-<section id="data" class="slide level2">
-<h2>Data</h2>
-<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 2/7</span></p>
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-            column-gap: 98px; row-gap: 150px;">
-  <div>
-    <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;">
-<p>Annotation</p>
-    </h3>
-    <ul>
-      <li>Bounding boxes</li>
-      <ul>
-        <li>Duplicate labels and boxes</li>
-        <li>Polygons to boxes</li>
-      <ul>
-    </ul>
-  </ul></ul></div>
-
-  <div>
-    <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;">
-    Class
-    </h3>
-    <ul>
-      <li>13 classes</li>
-        <ul>
-        <li>Class ambiguity</li>
-        <li>Imbalance class distribution</li>
-      <ul>
-    </ul>
-  </ul></ul></div>
-
-
-<style>
-  .annotation-stack img {
-    display: block;
-    width: 100%;
-    height: 200px;
-    max-width: none;
-    max-height: none;
-    object-fit: contain;
-    margin: 0;
-  }
-
-  .annotation-stack summary {
-    display: block;
-    list-style: none;
-    cursor: pointer;
-  }
-
-  .annotation-stack summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .annotation-stack details[open] > summary {
-    display: none;
-  }
-</style>
-
-<figure class="annotation-stack" style="margin: -140px; text-align: center;">
-  <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
-
-    <img src="images/annotation_example.png" alt="">
-
-    <details>
-      <summary>
-        <img src="images/annotation_conversion.png" alt="">
-      </summary>
-      <img src="images/changed.png" alt="">
-    </details>
-
-  </div>
-
-  <figcaption style="margin-top:-40px; font-size: 26px;">
-    Annotation examples
-  </figcaption>
-</figure>
-<div style="position: relative; top: -80px;">
-<div class="cell" data-fig-attr="style=&quot;transform: translateY(-80px);&quot;">
-<div class="cell-output-display">
-<div id="fig-class-distribution" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-class-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="prelim_files/figure-revealjs/fig-class-distribution-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;7: Number of annotations per class"><img data-src="prelim_files/figure-revealjs/fig-class-distribution-1.png" width="960"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: Number of annotations per class
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div></section>
-<section id="experimental-setup" class="slide level2">
-<h2>Experimental Setup</h2>
-<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 3/7</span></p>
-<p>A total of 4144 images in COCO style (<span class="citation" data-cites="coco">Lin et al. (<a href="#/average-precision" role="doc-biblioref" onclick="">2014</a>)</span>)</p>
-<div>
-<ul>
-<li>Data Split
-<ul>
-<li>Training set: 70% of the images</li>
-<li>Validation set: 20% of the images</li>
-<li>Test set: 10% of the images</li>
-</ul></li>
-<li>Training
-<ul>
-<li>Default Pytorch model (backbone ResNet50 <span class="citation" data-cites="hyperparameter">Smith (<a href="#/average-precision" role="doc-biblioref" onclick="">2018</a>)</span>)</li>
-<li>Hyperparameters suggested by Pytorch (<span class="citation" data-cites="hyperparameter_py">Torchvision Contributors (<a href="#/average-precision" role="doc-biblioref" onclick="">n.d.</a>)</span>))</li>
-<li>200 epochs</li>
-<li>batch size of 2</li>
-</ul></li>
-</ul>
-</div>
-</section>
-<section id="evaluation-metric" class="slide level2">
-<h2>Evaluation Metric</h2>
-<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 4/7</span></p>
-<p>Widely used metric</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div>
-<ul>
-<li><p>Average Precision</p>
-<ul>
-<li>Box locations<br>
-</li>
-<li>predicted classes<br>
-</li>
-<li>AP[0.50–0.95] on COCO dataset: 37% 80 classes <sup>[1]</sup></li>
-<li>AP[0.50–0.95] on our data: 0.03% 13 classes</li>
-</ul></li>
-</ul>
-</div>
-</div><div class="column" style="width:40%;">
-
-</div></div>
-<div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Source: <sup>[1]</sup><span class="citation" data-cites="hyperparameter_py">Torchvision Contributors (<a href="#/average-precision" role="doc-biblioref" onclick="">n.d.</a>)</span></p>
-</div>
-</section>
-<section id="improper-metric" class="slide level2">
-<h2>Improper Metric</h2>
-<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 5/7</span></p>
-<div>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="r-stack">
-<p>caption does not follow image change</p>
-<p><a href="images/whynew21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="images/whynew21.png" class="fragment fade-out" data-fragment-index="0" height="700"></a></p>
-<p><a href="images/newmetric.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="images/newmetric.png" class="fragment" data-fragment-index="0" height="450"></a></p>
-</div>
-</div><div class="column" style="width:50%;">
-<ul>
-<li><p>Annotation ambiguity in location</p></li>
-<li><p>Taking into account all overlapping bounding boxes</p></li>
-</ul>
-</div></div>
-</div>
-<!-- ::: {.nonincremental} -->
-<!-- :::: {.columns} -->
-<!-- ::: {.column width="50%"} -->
-<!-- ![](images/whynew21.png){.fragment .fade-out data-fragment-index=0 height=700px} -->
-<!-- ::: -->
-<!-- ::: {.column width="50%"} -->
-<!-- ```{=html} -->
-<!-- <style> -->
-<!--   .reveal .slides .fragment.focus-left, -->
-<!--   .reveal .slides .fragment.focus-right { -->
-<!--     visibility: visible !important; -->
-<!--     transition: opacity 0.3s ease !important; -->
-<!--   } -->
-<!--   .reveal .slides .fragment.focus-left { -->
-<!--     opacity: 1 !important; -->
-<!--   } -->
-<!--   .reveal .slides .fragment.focus-right { -->
-<!--     opacity: 0.25 !important; -->
-<!--   } -->
-<!--   .reveal .slides .fragment.focus-left.visible { -->
-<!--     opacity: 0.25 !important; -->
-<!--   } -->
-<!--   .reveal .slides .fragment.focus-right.visible { -->
-<!--     opacity: 1 !important; -->
-<!--   } -->
-<!-- </style> -->
-<!-- <div style="display: grid; -->
-<!--             grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); -->
-<!--             gap: 28px; height: 480px;"> -->
-<!--   <div class="fragment custom focus-left" data-fragment-index="0" -->
-<!--        style="display: flex; flex-direction: column; -->
-<!--               min-width: 0; color: #111;"> -->
-<!--     <h3 style="margin: 50 0 12px; font-size: 38px;"> -->
-<!-- ``` -->
-<!--   Widely used metric -->
-<!-- ```{=html}     -->
-<!-- </h3> -->
-<!--     <ul style="margin-top: 0;"> -->
-<!--       <li> -->
-<!-- ``` -->
-<!-- Average Precision -->
-<!-- ```{=html} -->
-<!-- </li> -->
-<!-- <ul> -->
-<!--       <!-- <li>Intersection over Union (IoU) </li> -->
-<!--       <li>location </li> -->
-<!--       <li> -->
-<!--       Predicted class -->
-<!-- ``` -->
-<!-- <!-- Precision=$\frac{TP}{TP+FP}$ -->
-<!-- ```{=html} -->
-<!-- </li> -->
-<!-- <li>AP[0.50–0.95] on COCO dataset: 37% 80 -->
-<!-- classes <sup>1</sup> </li> -->
-<!-- <li>AP[0.50–0.95] on our data: 0.03% 13 classes</li> -->
-<!-- </ul> -->
-<!-- </ul> -->
-<!--     <figure style="margin: -100px 10px 0; text-align: center;"> -->
-<!--       <img src="images/whynew2.png" alt="左侧图片" -->
-<!--            style="display: block; width: 100%; height: 120px; -->
-<!--                   object-fit: contain; object-position: center bottom; -->
-<!--                   max-width: none; max-height: none; margin: 0;"> -->
-<!--       <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
-<!--         <!-- Kanizsa triangle -->
-<!--       </figcaption> -->
-<!--     </figure> -->
-<!--   </div> -->
-<!--   <div class="fragment custom focus-right" data-fragment-index="0" -->
-<!--        style="display: flex; flex-direction: column; -->
-<!--               min-width: 0; color: #111;"> -->
-<!--     <h3 style="margin: 0 0 12px; font-size: 38px;"> -->
-<!--       New metric -->
-<!--     </h3> -->
-<!--     <ul style="margin-top: 0;"> -->
-<!--       <li> -->
-<!-- ``` -->
-<!-- Shape discrimination relies on both local curvature information and the global organization of that information (@loffler2003local). -->
-<!-- ```{=html} -->
-<!-- </li> -->
-<!--       <!-- <li>右侧第二条内容</li> -->
-<!--       <!-- <li>右侧第三条内容</li> -->
-<!--     </ul> -->
-<!--     <figure style="margin: -50 0 0; text-align: center;"> -->
-<!--       <img src="images/whynew.png" alt="右侧图片" -->
-<!--            style="display: block; width: 100%; height: 420px;  -->
-<!--                   object-fit: contain; object-position: center bottom; -->
-<!--                   max-width: none; max-height: none; margin: 0;"> -->
-<!--       <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
-<!--         A circle was split into five identical one-cycle segments and arranged in four different ways. -->
-<!--       </figcaption> -->
-<!--     </figure> -->
-<!--   </div> -->
-<!-- </div> -->
-<!-- ``` -->
-</section>
-<section id="improving-the-metric" class="slide level2">
-<h2>Improving the Metric</h2>
-<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 6/7</span></p>
-<div>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p>Pixel wise evaluation</p>
-<ul>
-<li>Consider all prediceted boxes</li>
-<li>Less strict on localization</li>
-</ul>
-<p><a href="images/newmetric.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="images/newmetric.png" height="300"></a></p>
-</div><div class="column" style="width:60%;">
-<p><a href="images/new_estimate.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="images/new_estimate.png" height="500"></a></p>
-</div></div>
-</div>
-</section>
-<section id="new-metric-results" class="slide level2">
-<h2>New Metric Results</h2>
-<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 7/7</span></p>
-<div>
-<div class="columns">
-<div class="column" style="width:40%;">
-<ul>
-<li>Improved performance
-<ul>
-<li>Accuracy=0.33</li>
-</ul></li>
-</ul>
-<p><a href="images/confusion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="images/confusion.png"></a></p>
-</div><div class="column" style="width:60%;">
-<p>Revisit the output: quad and triangle</p>
-<p><a href="images/whynew21.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="images/whynew21.png" height="600"></a></p>
-</div></div>
-</div>
-</section></section>
-<section>
-<section id="moving-forward" class="title-slide slide level1 center">
-<h1><span style="font-size: 132px;">Moving Forward</span></h1>
-<p>How well do neural networks perform on shape generalization tasks</p>
-</section>
-<section id="research-questions" class="slide level2">
-<h2>Research Questions</h2>
-<p><span style="font-size: 0.55em; color: #64748b;">moving forward · 1/2</span></p>
-<div>
-<ul>
-<li>How do the networks perform on classifying geometric shapes?</li>
-<li>Are these network architectures biased toward certain geometric shapes?</li>
-<li>How do the activation patterns differ between the networks during classification??</li>
-<li>What are the factors impacting the decisions?</li>
-</ul>
-</div>
-</section>
-<section id="method" class="slide level2">
-<h2>Method</h2>
-<p><span style="font-size: 0.55em; color: #64748b;">Moving forward · 2/2</span></p>
-<div>
-<ul>
-<li>Select representative networks<br>
-</li>
-<li>Train the networks with the same training data and test with different test sets</li>
-<li>Evaluation and analysis
-<ul>
-<li>Accuracy</li>
-<li>Activation correlation</li>
-<li>Generalized linear model, binomial distribution</li>
-</ul></li>
-</ul>
-</div>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="3">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="images/proj2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Training"><img data-src="images/proj2-1.png" height="200" alt="Training"></a></p>
-<figcaption>Training</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="images/proj2-22.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="test-1"><img data-src="images/proj2-22.png" height="200" alt="test-1"></a></p>
-<figcaption>test-1</figcaption>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><a href="images/proj2-3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="test-2"><img data-src="images/proj2-3.png" height="200" alt="test-2"></a></p>
-<figcaption>test-2</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</section></section>
-<section>
-<section id="contribution" class="title-slide slide level1 center">
-<h1><span style="font-size: 132px;">Contribution</span></h1>
-
-</section>
-<section id="contribution-1" class="slide level2">
-<h2>Contribution</h2>
-<p>This is a forensic oriented study, our contributions are as follows:</p>
-<!-- * Investigate the gap between computer model and human in shape recognition -->
-<ul>
-<li class="fragment">Explore whether neural networks can learn abstract shape representation.</li>
-<li class="fragment">Identify the factors that impact the decisions of neural networks in polygon classification tasks using statistical study.</li>
-<li class="fragment">Provide recommended architecture for forensic footwear related tasks.</li>
-</ul>
-</section></section>
-<section>
-<section id="questions-and-comments" class="title-slide slide level1 center">
-<h1><span style="font-size: 132px;">Questions and comments</span></h1>
 <!-- ######################## PAGE 25 ############################# -->
 </section>
 <section id="nn" class="slide level2">
@@ -1227,12 +829,12 @@ Figure&nbsp;7: Number of annotations per class
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-nndiagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: Neural network diagram
+Figure&nbsp;6: Neural network diagram
 </figcaption>
 </figure>
 </div>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Image source: <span class="citation" data-cites="deng2009imagenet">Deng et al. (<a href="#/average-precision" role="doc-biblioref" onclick="">2009</a>)</span></p>
+<p>Image source: <span class="citation" data-cites="deng2009imagenet">Deng et al. (<a href="#/reference" role="doc-biblioref" onclick="">2009</a>)</span></p>
 </div>
 </section>
 <section id="model-training-and-transfer-learning" class="slide level2">
@@ -1244,11 +846,11 @@ Figure&nbsp;8: Neural network diagram
 <ul>
 <li class="fragment">ImageNet: 1.2 million images, 1000 classes</li>
 </ul></li>
-<li class="fragment">AlexNet 59.3% accuracy <span class="citation" data-cites="alexnet">(<a href="#/average-precision" role="doc-biblioref" onclick="">Krizhevsky, Sutskever, and Hinton 2012</a>)</span></li>
+<li class="fragment">AlexNet 59.3% accuracy <span class="citation" data-cites="alexnet">(<a href="#/reference" role="doc-biblioref" onclick="">Krizhevsky, Sutskever, and Hinton 2012</a>)</span></li>
 <li class="fragment">Accuracy: percentage of correct predictions (50k test images)</li>
 <li class="fragment">Reuse the backbone
 <ul>
-<li class="fragment">Initializing with transferred <br> features can improve generalization <br> performance <span class="citation" data-cites="transfer-learning">(<a href="#/average-precision" role="doc-biblioref" onclick="">Yosinski et al. 2014</a>)</span></li>
+<li class="fragment">Initializing with transferred <br> features can improve generalization <br> performance <span class="citation" data-cites="transfer-learning">(<a href="#/reference" role="doc-biblioref" onclick="">Yosinski et al. 2014</a>)</span></li>
 </ul></li>
 </ul>
 <div id="fig-backbone" class="quarto-float quarto-figure quarto-figure-center">
@@ -1277,12 +879,12 @@ Figure&nbsp;8: Neural network diagram
 </style>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-backbone-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: A pretrained backbone can be used to extract features
+Figure&nbsp;7: A pretrained backbone can be used to extract features
 </figcaption>
 </figure>
 </div>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Image source: <span class="citation" data-cites="abstract">Zeiler and Fergus (<a href="#/average-precision" role="doc-biblioref" onclick="">2014</a>)</span></p>
+<p>Image source: <span class="citation" data-cites="abstract">Zeiler and Fergus (<a href="#/reference" role="doc-biblioref" onclick="">2014</a>)</span></p>
 </div>
 <!-- ## Two Categories of Vision Models -->
 <!-- [Background · Neural network · 3/3]{style="font-size: 0.55em; color: #64748b;"} -->
@@ -1356,15 +958,31 @@ Figure&nbsp;9: A pretrained backbone can be used to extract features
 <h2>Hubel and Wiesel Biological Vision Model</h2>
 <p><span style="font-size: 0.55em; color: #64748b;">Background · Human recognition · 1/2</span></p>
 <!-- Information flow in a heierachical way -->
-<p>Inspiration of CNN</p>
+<p>Inspiration of a computer vision model <span class="citation" data-cites="fukushima1980neocognitron">(<a href="#/reference" role="doc-biblioref" onclick="">Fukushima 1980</a>)</span></p>
 <div>
 <ul>
 <li>Local features are eventually integrated into information for recognition</li>
 </ul>
 </div>
-<p><img data-src="images/Neocognition-1.png"> <img data-src="images/hubel_circle.png" style="transform: translateX(100px);" width="800"></p>
+<p><a href="images/Neocognition-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="images/Neocognition-1.png"></a></p>
+<div id="fig-biological_model" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-biological_model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/hubel_circle.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Figure&nbsp;8: Biological model diagram"><img data-src="images/hubel_circle.png" width="800"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-biological_model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Biological model diagram
+</figcaption>
+</figure>
+</div>
+<style>
+#fig-biological_model img {
+  transform: translate(-180px, -40px);
+}
+</style>
+<!-- ![](images/hubel_circle.png){#fig-biological_model width="800px" style="transform: translateX(-100px);"} -->
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Source: <span class="citation" data-cites="Hubel1962">Awang (<a href="#/average-precision" role="doc-biblioref" onclick="">1962</a>)</span> <span class="citation" data-cites="fukushima1980neocognitron">Fukushima (<a href="#/average-precision" role="doc-biblioref" onclick="">1980</a>)</span> <span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/average-precision" role="doc-biblioref" onclick="">2003</a>)</span></p>
+<p>Image source: <span class="citation" data-cites="Hubel1962">Awang (<a href="#/reference" role="doc-biblioref" onclick="">1962</a>)</span> <span class="citation" data-cites="fukushima1980neocognitron">Fukushima (<a href="#/reference" role="doc-biblioref" onclick="">1980</a>)</span> <span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/reference" role="doc-biblioref" onclick="">2003</a>)</span></p>
 </div>
 <div class="fragment" style="position: absolute; left: 20px; right: 20px; bottom: 20px; font-size: 40px; text-align: center;">
 <p>But there’s more</p>
@@ -1405,24 +1023,32 @@ Figure&nbsp;9: A pretrained backbone can be used to extract features
               min-width: 0; color: #111;">
 
     <h3 style="margin: 50 0 12px; font-size: 48px;">
-<p>Gestalt Principles (<span class="citation" data-cites="gestalt">Koffka (<a href="#/average-precision" role="doc-biblioref" onclick="">1935</a>)</span>)</p>
+<p>Gestalt Principles <span class="citation" data-cites="gestalt">(<a href="#/reference" role="doc-biblioref" onclick="">Koffka 1935</a>)</span></p>
 </h3>
 
     <ul style="margin-top: 0;">
       <li>
-<p>Illusory contour is not physically present but is filled by the visual system (<span class="citation" data-cites="kanizsa">Kanizsa (<a href="#/average-precision" role="doc-biblioref" onclick="">1976</a>)</span>)</p>
+<p>Illusory contour is not physically present but is filled by the visual system <span class="citation" data-cites="kanizsa">(<a href="#/reference" role="doc-biblioref" onclick="">Kanizsa 1976</a>)</span></p>
 </li>
       
     </ul>
 
     <figure style="margin: 30px 10px 0; text-align: center;">
+<div id="fig-kaniza-triangle" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-kaniza-triangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
       <img src="images/kanizsatriangle.png" alt="左侧图片" style="display: block; width: 100%; height: 220px;
                   object-fit: contain; object-position: center bottom;
                   max-width: none; max-height: none; margin: 0;">
-
-      <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;">
-        Kanizsa triangle
-      </figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kaniza-triangle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Kanizsa triangle
+</figcaption>
+</figure>
+</div>
+      <!-- <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
+      <!--   Kanizsa triangle -->
+      <!-- </figcaption> -->
     </figure>
   </div>
 
@@ -1435,50 +1061,966 @@ Figure&nbsp;9: A pretrained backbone can be used to extract features
 
     <ul style="margin-top: 0;">
       <li>
-<p>Shape discrimination relies on both local curvature information and the global organization of that information (<span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/average-precision" role="doc-biblioref" onclick="">2003</a>)</span>).</p>
+<p>Shape discrimination relies on both local curvature information and the global organization of that information <span class="citation" data-cites="loffler2003local">(<a href="#/reference" role="doc-biblioref" onclick="">Loffler, Wilson, and Wilkinson 2003</a>)</span>.</p>
 </li>
       
     </ul>
 
     <figure style="margin: auto 0 0; text-align: center;">
+<div id="fig-local-global" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-local-global-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
       <img src="images/wilson.png" alt="右侧图片" style="display: block; width: 100%; height: 220px;
                   object-fit: contain; object-position: center bottom;
                   max-width: none; max-height: none; margin: 0;">
-
-      <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;">
-        A circle was split into five identical one-cycle segments and arranged in four different ways.
-      </figcaption>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-local-global-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: A circle was split into five identical one-cycle segments and arranged in four different ways
+</figcaption>
+</figure>
+</div>
+      <!-- <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
+      <!--   A circle was split into five identical one-cycle segments and arranged in four different ways. -->
+      <!-- </figcaption> -->
     </figure>
   </div>
 
 </div>
 <div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
-<p>Source: @<span class="citation" data-cites="kanizsa">Kanizsa (<a href="#/average-precision" role="doc-biblioref" onclick="">1976</a>)</span> <span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/average-precision" role="doc-biblioref" onclick="">2003</a>)</span></p>
+<p>Image sources: @<span class="citation" data-cites="kanizsa">Kanizsa (<a href="#/reference" role="doc-biblioref" onclick="">1976</a>)</span> <span class="citation" data-cites="loffler2003local">Loffler, Wilson, and Wilkinson (<a href="#/reference" role="doc-biblioref" onclick="">2003</a>)</span></p>
 </div>
 <div class="fragment" style="position: absolute; left: 20px; right: 20px; bottom: 20px; font-size: 40px; text-align: center;">
 <!-- Organizing features by both local and global information,  -->
-<p>Resembles ViT</p>
+<!-- Resembles computer vision model -->
 </div>
 <div style="position: absolute; left: 20px; bottom: 14px; font-size: 16px;">
 <p><a href="#/background-menu">← Background</a></p>
 </div>
+<!-- ####################### Project1 ##################################### -->
 </section></section>
-<section id="reference" class="title-slide slide level1 center">
-<h1>Reference</h1>
+<section>
+<section id="project-1" class="title-slide slide level1 center">
+<h1><span style="font-size: 92px;">Project 1</span></h1>
+<p>Is the object detection network sufficient to automate footwear characteristic identification</p>
+</section>
+<section id="object-detection-architecture" class="slide level2">
+<h2>Object Detection Architecture</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 1/8</span></p>
+<div>
+<ul>
+<li><p>Frame the footwear characteristic identification problem as an object detection task</p></li>
+<li><p>Object detection architecture (Faster-RCNN, <span class="citation" data-cites="fasterrcnn">Ren et al. (<a href="#/reference" role="doc-biblioref" onclick="">2016</a>)</span>)</p></li>
+<li><p>Transfer learning</p></li>
+</ul>
+</div>
+<div id="fig-detection" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-detection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="./images/dection_single.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Figure&nbsp;11: Object detection diagram"><img data-src="./images/dection_single.png"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-detection-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Object detection diagram
+</figcaption>
+</figure>
+</div>
+<!-- ##################### project1 Data ################# -->
+</section>
+<section id="data" class="slide level2">
+<h2>Data</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 2/8</span></p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 98px; row-gap: 150px;">
+  <div>
+    <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;">
+<p>Annotation</p>
+    </h3>
+    <ul>
+      <li>Bounding boxes</li>
+      <ul>
+        <li>Duplicate labels and boxes</li>
+        <li>Polygons to boxes</li>
+      <ul>
+    </ul>
+  </ul></ul></div>
+
+  <div>
+    <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;">
+    Class ambiguity
+    </h3>
+    <ul>
+      <li>13 classes</li>
+        <ul>
+        <li>Class ambiguity</li>
+        <li>Imbalance class distribution</li>
+      <ul>
+    </ul>
+  </ul></ul></div>
+
+
+<style>
+  .annotation-stack img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    margin: 0;
+  }
+
+  .annotation-stack summary {
+    display: block;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .annotation-stack summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .annotation-stack details[open] > summary {
+    display: none;
+  }
+</style>
+
+<div class="annotation-stack" style="margin: -160px; text-align: center;">
+<div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
+
+<img src="images/annotation_example.png" alt="">
+
+<details>
+<summary>
+<div id="fig-annotation-conversion" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-annotation-conversion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/changed.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Figure&nbsp;12: Annotation example"><img data-src="images/changed.png"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-annotation-conversion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Annotation example
+</figcaption>
+</figure>
+</div>
+</summary>
+
+<img src="images/changed.png" alt="">
+
+</details>
+</div>
+</div>
+<!-- <figure class="annotation-stack" style="margin: -140px; text-align: center;"> -->
+<!--   <div style="display: grid; grid-template-columns: 1fr; gap: 10px;"> -->
+
+<!--     <img src="images/annotation_example.png" alt=""> -->
+
+<!--     <details> -->
+<!--       <summary> -->
+<!--         <img src="images/annotation_conversion.png" alt=""> -->
+<!--       </summary> -->
+<!--       <img src="images/changed.png" alt=""> -->
+<!--     </details> -->
+
+<!--   </div> -->
+
+<!--   <figcaption style="margin-top:-40px; font-size: 26px;"> -->
+<!--     Annotation examples -->
+<!--   </figcaption> -->
+<!-- </figure> -->
+<div style="position: relative; top: -80px;">
+<div class="cell" data-fig-attr="style=&quot;transform: translateY(-80px);&quot;">
+<div class="cell-output-display">
+<div id="fig-class-distribution" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-class-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="prelim_files/figure-revealjs/fig-class-distribution-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Figure&nbsp;13: Number of annotations per class"><img data-src="prelim_files/figure-revealjs/fig-class-distribution-1.png" width="960"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-class-distribution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;13: Number of annotations per class
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+<section id="experimental-setup" class="slide level2">
+<h2>Experimental Setup</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 3/8</span></p>
+<p>A total of 4144 images in COCO style <span class="citation" data-cites="coco">(<a href="#/reference" role="doc-biblioref" onclick="">Lin et al. 2014</a>)</span></p>
+<div>
+<ul>
+<li>Data Split
+<ul>
+<li>Training set: 70% of the images</li>
+<li>Validation set: 20% of the images</li>
+<li>Test set: 10% of the images</li>
+</ul></li>
+<li>Training
+<ul>
+<li>Default Pytorch model <span class="citation" data-cites="hyperparameter">(backbone ResNet50 <a href="#/reference" role="doc-biblioref" onclick="">Smith 2018</a>)</span></li>
+<li>Hyperparameters suggested by Pytorch <span class="citation" data-cites="hyperparameter_py">(<a href="#/reference" role="doc-biblioref" onclick="">Torchvision Contributors, n.d.</a>)</span></li>
+<li>200 epochs</li>
+<li>batch size of 2</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="evaluation-metric" class="slide level2">
+<h2>Evaluation Metric</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 4/8</span></p>
+<p>Widely used metric</p>
+<style>
+  .two-bullets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+
+  .reveal .fragment.grey-out {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .reveal .fragment.grey-out.visible,
+  .reveal .fragment.grey-out.visible * {
+    color: #aaa !important;
+  }
+</style>
+
+<div class="two-bullets">
+
+  <div class="fragment grey-out" data-fragment-index="0">
+    <ul>
+      <li>Average Precision</li>
+        <ul>
+          <li>Box locations, sizes</li>
+          <li>predicted classes</li>
+        </ul>
+        <li>COCO dataset
+        <ul>
+          <li>37% 80 classes <sup>[1] [2]</sup></li>
+          <li>Clearly defined locations and classes</li>
+        </ul>
+        </li><li>Our data: 
+        <ul>
+          <li>3% 13 classes <sup></sup></li>
+          <li>Ambiguous annotation</li>
+        </ul>
+    </li></ul>
+  </div>
+
+
+  <div class="fragment fade-in" data-fragment-index="0">
+    <ul>
+      <li>Unambiguity Annotation Matters</li>
+        <ul>
+          <li>
+<p>localization precision suffers significantly from inaccurate bounding boxes while classification accuracy is less affected <span class="citation" data-cites="refinebboxlocation">(<a href="#/reference" role="doc-biblioref" onclick="">Liu et al. 2022</a>)</span></p>
+</li>
+          <li>
+<p>When the quality of training data degenerates, the performance of the typical object detectors is severely impaired <span class="citation" data-cites="refineclearcategory">(<a href="#/reference" role="doc-biblioref" onclick="">Xu et al. 2021</a>)</span></p>
+</li>
+</ul>
+  </ul></div>
+
+</div>
+<!-- ::: columns -->
+<!-- ::: nonincremental -->
+<!-- -    -->
+<!--     -   \ -->
+<!--     -   \  -->
+<!--     -    -->
+<!--     -    -->
+<!-- ::: -->
+<!-- ::: {.column width="40%"} -->
+<!-- ::: -->
+<!-- ::: -->
+<div style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;">
+<p>Source: [1]<span class="citation" data-cites="hyperparameter_py">Torchvision Contributors (<a href="#/reference" role="doc-biblioref" onclick="">n.d., 2</a>)</span><span class="citation" data-cites="coco">Lin et al. (<a href="#/reference" role="doc-biblioref" onclick="">2014</a>)</span></p>
+</div>
+</section>
+<section id="improper-metric" class="slide level2">
+<h2>Improper Metric</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 5/8</span></p>
+<div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="r-stack">
+<div id="fig-shiny" class="fragment fade-out quarto-float quarto-figure quarto-figure-center" data-fragment-index="0">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-shiny-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/whynew2100.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Figure&nbsp;14: A prediction on our shoesole data"><img data-src="images/whynew2100.png" class="fragment fade-out" data-fragment-index="0" height="650"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shiny-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: A prediction on our shoesole data
+</figcaption>
+</figure>
+</div>
+<div id="fig-zoomed" class="fragment quarto-float quarto-figure quarto-figure-center" data-fragment-index="0">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-zoomed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/newmetric.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Figure&nbsp;15: Zoomed in diagram"><img data-src="images/newmetric.png" class="fragment" data-fragment-index="0" height="450"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zoomed-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;15: Zoomed in diagram
+</figcaption>
+</figure>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Annotation ambiguity
+<ul>
+<li>box size</li>
+<li>box location</li>
+</ul></li>
+<li>Taking into account all overlapping bounding boxes</li>
+</ul>
+</div></div>
+</div>
+<!-- ::: {.nonincremental} -->
+<!-- :::: {.columns} -->
+<!-- ::: {.column width="50%"} -->
+<!-- ![](images/whynew21.png){.fragment .fade-out data-fragment-index=0 height=700px} -->
+<!-- ::: -->
+<!-- ::: {.column width="50%"} -->
+<!-- ```{=html} -->
+<!-- <style> -->
+<!--   .reveal .slides .fragment.focus-left, -->
+<!--   .reveal .slides .fragment.focus-right { -->
+<!--     visibility: visible !important; -->
+<!--     transition: opacity 0.3s ease !important; -->
+<!--   } -->
+<!--   .reveal .slides .fragment.focus-left { -->
+<!--     opacity: 1 !important; -->
+<!--   } -->
+<!--   .reveal .slides .fragment.focus-right { -->
+<!--     opacity: 0.25 !important; -->
+<!--   } -->
+<!--   .reveal .slides .fragment.focus-left.visible { -->
+<!--     opacity: 0.25 !important; -->
+<!--   } -->
+<!--   .reveal .slides .fragment.focus-right.visible { -->
+<!--     opacity: 1 !important; -->
+<!--   } -->
+<!-- </style> -->
+<!-- <div style="display: grid; -->
+<!--             grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); -->
+<!--             gap: 28px; height: 480px;"> -->
+<!--   <div class="fragment custom focus-left" data-fragment-index="0" -->
+<!--        style="display: flex; flex-direction: column; -->
+<!--               min-width: 0; color: #111;"> -->
+<!--     <h3 style="margin: 50 0 12px; font-size: 38px;"> -->
+<!-- ``` -->
+<!--   Widely used metric -->
+<!-- ```{=html}     -->
+<!-- </h3> -->
+<!--     <ul style="margin-top: 0;"> -->
+<!--       <li> -->
+<!-- ``` -->
+<!-- Average Precision -->
+<!-- ```{=html} -->
+<!-- </li> -->
+<!-- <ul> -->
+<!--       <!-- <li>Intersection over Union (IoU) </li> -->
+<!--       <li>location </li> -->
+<!--       <li> -->
+<!--       Predicted class -->
+<!-- ``` -->
+<!-- <!-- Precision=$\frac{TP}{TP+FP}$ -->
+<!-- ```{=html} -->
+<!-- </li> -->
+<!-- <li>AP[0.50–0.95] on COCO dataset: 37% 80 -->
+<!-- classes <sup>1</sup> </li> -->
+<!-- <li>AP[0.50–0.95] on our data: 0.03% 13 classes</li> -->
+<!-- </ul> -->
+<!-- </ul> -->
+<!--     <figure style="margin: -100px 10px 0; text-align: center;"> -->
+<!--       <img src="images/whynew2.png" alt="左侧图片" -->
+<!--            style="display: block; width: 100%; height: 120px; -->
+<!--                   object-fit: contain; object-position: center bottom; -->
+<!--                   max-width: none; max-height: none; margin: 0;"> -->
+<!--       <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
+<!--         <!-- Kanizsa triangle -->
+<!--       </figcaption> -->
+<!--     </figure> -->
+<!--   </div> -->
+<!--   <div class="fragment custom focus-right" data-fragment-index="0" -->
+<!--        style="display: flex; flex-direction: column; -->
+<!--               min-width: 0; color: #111;"> -->
+<!--     <h3 style="margin: 0 0 12px; font-size: 38px;"> -->
+<!--       New metric -->
+<!--     </h3> -->
+<!--     <ul style="margin-top: 0;"> -->
+<!--       <li> -->
+<!-- ``` -->
+<!-- Shape discrimination relies on both local curvature information and the global organization of that information (@loffler2003local). -->
+<!-- ```{=html} -->
+<!-- </li> -->
+<!--       <!-- <li>右侧第二条内容</li> -->
+<!--       <!-- <li>右侧第三条内容</li> -->
+<!--     </ul> -->
+<!--     <figure style="margin: -50 0 0; text-align: center;"> -->
+<!--       <img src="images/whynew.png" alt="右侧图片" -->
+<!--            style="display: block; width: 100%; height: 420px;  -->
+<!--                   object-fit: contain; object-position: center bottom; -->
+<!--                   max-width: none; max-height: none; margin: 0;"> -->
+<!--       <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
+<!--         A circle was split into five identical one-cycle segments and arranged in four different ways. -->
+<!--       </figcaption> -->
+<!--     </figure> -->
+<!--   </div> -->
+<!-- </div> -->
+<!-- ``` -->
+</section>
+<section id="improving-the-metric" class="slide level2">
+<h2>Improving the Metric</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 6/8</span></p>
+<div>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Pixel-wise evaluation</p>
+<ul>
+<li>Consider all predicted boxes</li>
+<li>Less strict on localization</li>
+</ul>
+<div id="fig-diagram" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/newmetric.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Figure&nbsp;16: Zoomed in diagram"><img data-src="images/newmetric.png" height="300"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-diagram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;16: Zoomed in diagram
+</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<div id="fig-image" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-image-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/new_estimate2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="Figure&nbsp;17: Pixel-wise evaluation"><img data-src="images/new_estimate2.png" height="600"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-image-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;17: Pixel-wise evaluation
+</figcaption>
+</figure>
+</div>
+</div></div>
+</div>
+</section>
+<section id="new-metric-results" class="slide level2">
+<h2>New Metric Results</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 7/8</span></p>
+<div>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>Improved performance
+<ul>
+<li>Accuracy=0.33</li>
+</ul></li>
+</ul>
+<div id="fig-newmetric" class="quarto-float quarto-figure quarto-figure-left" data-fig-align="left">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-newmetric-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="images/confusion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="Figure&nbsp;18: Confusion matrix on the test set"><img data-src="images/confusion.png" class="quarto-figure quarto-figure-left"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-newmetric-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;18: Confusion matrix on the test set
+</figcaption>
+</figure>
+</div>
+<!-- ::: -->
+<!-- ::: {.column width="60%"} -->
+<!-- * What has been addressed:         -->
+<!--    * Ambiguous location        -->
+<!--    * Ambiguous size -->
+<!-- * What has not been addressed: -->
+<!--     * Ambiguous classes -->
+</div></div>
+</div>
+</section>
+<section id="project-1-summary" class="slide level2">
+<h2>Project 1 Summary</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Project-1 · 8/8</span></p>
+<style>
+
+.split-demo .image-swap {
+  display: grid !important;
+  position: relative;
+  z-index: 0;
+}
+
+.reveal .split-demo .image-swap > img {
+  grid-area: 1 / 1 !important;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.split-demo .image-stage > .grey-mask {
+  z-index: 10;
+}
+
+
+
+  
+  .split-demo .left-boxes {
+    margin-top: 80px;
+  }
+  
+  
+  .split-demo .content-box {
+    padding: 24px;
+  }
+  
+  .split-demo {
+    --bullet-size: 40px;
+    --title-size: 44px;
+  }
+
+  .split-demo {
+    --bullet-size: 26px; 
+    --title-size: 30px;  
+
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 24px;
+    text-align: left;
+  }
+
+  
+  .split-demo .left-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+  }
+
+  .split-demo .content-box {
+    border: 2px solid #888;
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+
+  .reveal .split-demo h3 {
+    font-size: var(--title-size);
+    margin: 0 0 12px;
+  }
+
+  .reveal .split-demo ul {
+    display: block;
+    margin: 0;
+    padding-left: 1.2em;
+    font-size: var(--bullet-size);
+  }
+
+  .reveal .split-demo li {
+    margin-bottom: 10px;
+  }
+
+  
+  .reveal .split-demo .fragment.grey-later {
+    visibility: inherit !important;
+    opacity: 1 !important;
+  }
+
+  .reveal .split-demo .fragment.grey-later.visible,
+  .reveal .split-demo .fragment.grey-later.visible * {
+    color: #aaa !important;
+  }
+
+  
+  .split-demo .right-panel {
+    min-width: 0;
+  }
+
+  .reveal .split-demo .right-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
+    margin: 20px 0 0;
+    border: none;
+    box-shadow: none;
+  }
+  
+  
+  .split-demo .image-stage {
+    position: relative;
+    width: 80%;
+    margin-top: 20px;
+    cursor: zoom-in;
+  }
+  
+  .reveal .split-demo .image-stage img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    margin: 0;
+  }
+  
+  
+  .image-stage .grey-mask {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 60%;
+    height: 100%;
+    background: rgba(170, 170, 170, 0.7);
+    pointer-events: none;
+  }
+  
+  
+  .masked-image-dialog {
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-width: 94vw;
+    max-height: 94vh;
+  }
+  
+  .masked-image-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+  }
+  
+  .masked-image-dialog .image-stage {
+    position: relative;
+    margin: 0;
+    cursor: zoom-out;
+  }
+  
+  .masked-image-dialog img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 85vh;
+    margin: 0;
+  }
+</style>
+
+<div class="split-demo">
+
+  <div class="left-boxes">
+
+    
+    <div class="content-box fragment fade-in" data-fragment-index="0">
+      <h3> Ambiguity </h3>
+
+      <ul>
+        <li class="fragment grey-later" data-fragment-index="1">
+          Box location
+        </li>
+
+        <li class="fragment grey-later" data-fragment-index="1">
+          Box size
+        </li>
+
+        <li>
+          Class
+        </li>
+      </ul>
+    </div>
+
+    
+    <div class="content-box fragment fade-in" data-fragment-index="1">
+      <h3>Implementing a new metric</h3>
+
+      <ul>
+        <li>Resolve the box ambiguity</li>
+        <li>Accuracy: 33%
+        <!-- , not far from the reported accuracy 37% -->
+        </li>
+        <li>Class ambiguity has not been considered </li>
+      </ul>
+    </div>
+
+  </div>
+
+    
+  
+
+<div id="fig-quad" class="fragment fade-in quarto-float quarto-figure quarto-figure-center" data-fragment-index="2">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-quad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="right-panel">
+
+  <ul>
+    <li>Revisit the result </li>
+  </ul>
+
+
+  <div class="image-stage" role="button" tabindex="0" aria-label="zoom in" onclick="
+         event.stopPropagation();
+         const replacement = this.querySelector('.replacement-image');
+         const current = replacement.classList.contains('visible')
+           ? replacement
+           : this.querySelector('.original-image');
+         const popup = document.getElementById('swap-preview');
+         popup.querySelector('img').src = current.src;
+         popup.showModal();
+       " onkeydown="
+         if (event.key === 'Enter' || event.key === ' ') {
+           event.preventDefault();
+           event.stopPropagation();
+           this.click();
+         }
+       ">
+       
+    <div class="image-swap">
+      <img class="original-image" src="images/whynew201.png" alt="Original">
+      <img class="replacement-image fragment fade-in" data-fragment-index="3" src="images/whynew202.png" alt="Replacement">
+  </div>
+
+<div class="grey-mask"></div>
+  </div>
+</div>
+
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-quad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;19: Quad and triangle
+</figcaption>
+</figure>
+</div>
+    
+
+    
+    
+
+<dialog id="swap-preview" class="masked-image-dialog" aria-label="" onclick="event.stopPropagation(); this.close();">
+
+  <div class="image-stage">
+    <img src="images/whynew21.png" alt="Enlarged image">
+
+
+    <div class="grey-mask"></div>
+  </div>
+</dialog>
+
+
+
+
+<!-- <div class="step-box fragment fade-in" data-fragment-index="0"> -->
+<!--     <h3>Step 1</h3> -->
+<!--     <p>Ambiguity</p> -->
+<!--       <li> -->
+<!--         
+<!--       </li> -->
+<!--   </div> -->
+<!-- ::: nonincremental -->
+<!-- ::: columns -->
+<!-- ::: {.column width="40%"} -->
+<!-- -   We implemented a new metric -->
+<!--     -   Accuracy=0.33 -->
+<!-- ![](images/confusion.png) -->
+<!-- ::: -->
+<!-- ::: {.column width="60%"} -->
+<!-- * Revisit the result   -->
+<!-- ![](){height="600px"} -->
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: -->
+</div></section></section>
+<section>
+<section id="project-2-and-project-3" class="title-slide slide level1 center">
+<h1><span style="font-size: 92px;">Project 2 and Project 3</span></h1>
+<p>How well do neural networks perform on shape generalization tasks</p>
+</section>
+<section id="follow-up-questions" class="slide level2">
+<h2>Follow-up Questions</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Project 2 and Project 3 · 1/3</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div>
+<ul>
+<li><p>Project 2</p>
+<ul>
+<li><p>How do the networks perform on classifying geometric shapes?</p></li>
+<li><p>Are these network architectures biased toward certain geometric shapes?</p></li>
+<li><p>How do the activation patterns differ between the networks during classification?</p></li>
+</ul></li>
+</ul>
+</div>
+</div><div class="column" style="width:50%;">
+<div>
+<ul>
+<li><p>Project 3</p>
+<ul>
+<li>Is side count or side length impacting the decisions?</li>
+</ul></li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="experimental-study-design" class="slide level2">
+<h2>Experimental Study Design</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Project 2 and Project 3 · 2/3</span></p>
+<style>
+  .bullet-photo-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 60fr) minmax(0, 40fr);
+    gap: 30px;
+    text-align: left;
+  }
+
+  .reveal .bullet-photo-layout ul {
+    display: block;
+    margin: 0;
+    padding-left: 1.2em;
+    font-size: 30px; /* bullet 字号 */
+  }
+
+  .bullet-photo-layout li {
+    margin-bottom: 15px;
+  }
+
+  .bullet-photo-layout .photo-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 0;
+  }
+
+  .reveal .bullet-photo-layout .photo-column img {
+    display: block;
+    width: 100%;
+    height: auto; /* 每张图片占据的高度 */
+    object-fit: contain;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+  }
+</style>
+
+<div class="bullet-photo-layout">
+
+  <!-- 左侧 bullet -->
+  <div>
+    <ul>
+      <li class="fragment fade-in" data-fragment-index="0">
+        Select architectures that were state-of-the-art at the time
+      </li>
+
+      <li class="fragment fade-in" data-fragment-index="1">
+        Design tests using geometric shapes for both the training and test sets
+        <ul>
+          <li class="fragment fade-in" data-fragment-index="1">
+          Train networks on the training data
+          and evaluate on test sets
+          </li>
+          <li class="fragment fade-in" data-fragment-index="2">
+          Test sets
+          </li>
+            <ul>
+              
+                <li class="fragment fade-in" data-fragment-index="2">
+                Seen test sets
+              </li>
+                <li class="fragment fade-in" data-fragment-index="3">
+                Challenging test tests
+              </li>
+            </ul>
+            
+          <li class="fragment fade-in" data-fragment-index="4">
+          Evaluation
+          </li>
+            <ul>
+              
+                <li class="fragment fade-in" data-fragment-index="4">
+                Classification accuracy - architecture bias
+              </li>
+                <li class="fragment fade-in" data-fragment-index="4">
+                Feature map - activation correlation
+              </li>
+              
+                <li class="fragment fade-in" data-fragment-index="4">
+                Classification outcome - correct or incorrect - Binomial generalized linear model (GLM)
+              </li>
+            </ul>
+        </ul>
+      </li>
+
+      <!-- <li class="fragment fade-in" data-fragment-index="2"> -->
+      <!--   Third point -->
+      <!-- </li> -->
+    </ul>
+  </div>
+
+  <!-- 右侧图片竖排 -->
+  <div class="photo-column">
+    <img class="fragment fade-in" data-fragment-index="1" src="images/test01.png" alt="First example">
+
+    <img class="fragment fade-in" data-fragment-index="2" src="images/test02.png" alt="Second example">
+
+    <img class="fragment fade-in" data-fragment-index="3" src="images/test03.png" alt="Third example">
+<div id="fig-test_all" class="fragment fade-in quarto-float quarto-figure quarto-figure-center" data-fragment-index="4">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-test_all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+    <img src="images/test_all.png" alt="Third example">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-test_all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;20: Experimental design diagram
+</figcaption>
+</figure>
+</div>
+</div>
+
+</div>
+</section>
+<section id="summary---project-2-and-project-3" class="slide level2">
+<h2>Summary - Project 2 and Project 3</h2>
+<p><span style="font-size: 0.55em; color: #64748b;">Project 2 and Project 3 · 3/3</span></p>
+<div class="fragment" data-fragment-index="0">
+<p>Investigate neural networks’ performance on shape generalization tasks</p>
+<ul>
+<li><p>Explore whether neural networks can learn abstract shape representation</p></li>
+<li><p>Identify the factors that impact the decisions of neural networks in polygon classification tasks using statistical study</p></li>
+<li><p>Provide recommended architecture for geometric related tasks</p></li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="1" style="margin-top: -10px;">
+<ul>
+<li><strong>Progress</strong></li>
+</ul>
+</div>
+<div class="fragment" data-fragment-index="2" style="margin-top: -30px; font-size: 28px; position: relative; left: 40px;">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Project 2 progress</strong></p>
+<ul>
+<li><span style="color: green;">✓</span> Literature review</li>
+<li><span style="color: green;">✓</span> Design</li>
+<li><span style="color: green;">✓</span> Date simulation</li>
+<li><span style="color: green;">✓</span> Experiment</li>
+<li><span style="color: #e69500;">◷</span> Analysis</li>
+<li>Write-up</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Project 3 progress</strong></p>
+<ul>
+<li><span style="color: green;">✓</span> Literature review</li>
+<li><span style="color: green;">✓</span> Design</li>
+<li><span style="color: green;">✓</span> Date simulation</li>
+<li><span style="color: #e69500;">◷</span> Experiment</li>
+<li>Analysis</li>
+<li>Write-up</li>
+</ul>
+</div></div>
+</div>
+</section></section>
+<section id="questions-and-comments" class="title-slide slide level1 center">
+<h1><span style="font-size: 92px;">Questions and comments</span></h1>
 
 </section>
 
-<section id="average-precision" class="title-slide slide level1 smaller scrollable" data-visibility="uncounted">
-<h1>Average precision</h1>
-<p><a href="images/iou.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="images/iou.png"></a></p>
-<!-- # Appendix -->
-<!-- ![](images/trainingloss.png) -->
-<div class="quarto-auto-generated-content">
-<div class="footer footer-default">
-
-</div>
-</div>
+<section id="reference" class="title-slide slide level1 allowframebreaks smaller scrollable">
+<h1>Reference</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Adipure" class="csl-entry" role="listitem">
+Adidas. n.d. <span>“Men’s Adipure SP 2.0 Spikeless Golf Shoe - White.”</span> <a href="https://www.golftown.com/en-CA/shoes/mens-golf-shoes/adidas/mens-adipure-sp-2.0-spikeless-golf-shoe---white-40117696.html">https://www.golftown.com/en-CA/shoes/mens-golf-shoes/adidas/mens-adipure-sp-2.0-spikeless-golf-shoe---white-40117696.html</a>.
+</div>
 <div id="ref-Hubel1962" class="csl-entry" role="listitem">
 Awang, Adriawan. 1962. <span>“Receptive Fields, Binocular Interaction and Functional Architecture in the Cat’s Visual Cortex.”</span> <em>The Journal of Physiology</em>.
 </div>
@@ -1503,6 +2045,9 @@ Krizhevsky, Alex, Ilya Sutskever, and Geoffrey E Hinton. 2012. <span>“Imagenet
 <div id="ref-coco" class="csl-entry" role="listitem">
 Lin, Tsung-Yi, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva Ramanan, Piotr Dollár, and C. Lawrence Zitnick. 2014. <span>“Microsoft COCO: Common Objects in Context.”</span> In <em>Computer Vision – ECCV 2014</em>, 740–55. Springer. <a href="https://doi.org/10.1007/978-3-319-10602-1_48">https://doi.org/10.1007/978-3-319-10602-1_48</a>.
 </div>
+<div id="ref-refinebboxlocation" class="csl-entry" role="listitem">
+Liu, Chengxin, Kewei Wang, Hao Lu, Zhiguo Cao, and Ziming Zhang. 2022. <span>“Robust Object Detection with Inaccurate Bounding Boxes.”</span> In <em>Computer Vision – ECCV 2022</em>.
+</div>
 <div id="ref-loffler2003local" class="csl-entry" role="listitem">
 Loffler, Gunter, Hugh R Wilson, and Frances Wilkinson. 2003. <span>“Local and Global Contributions to Shape Discrimination.”</span> <em>Vision Research</em> 43 (5): 519–30.
 </div>
@@ -1515,11 +2060,26 @@ Smith, Leslie N. 2018. <span>“A Disciplined Approach to Neural Network Hyper-P
 <div id="ref-hyperparameter_py" class="csl-entry" role="listitem">
 Torchvision Contributors. n.d. <span>“Torchvision Object Detection Training Reference.”</span> GitHub repository. <a href="https://github.com/pytorch/vision/blob/main/references/detection/train.py">https://github.com/pytorch/vision/blob/main/references/detection/train.py</a>.
 </div>
+<div id="ref-refineclearcategory" class="csl-entry" role="listitem">
+Xu, Youjiang, Linchao Zhu, Yi Yang, and Fei Wu. 2021. <span>“Training Robust Object Detectors from Noisy Category Labels and Imprecise Bounding Boxes.”</span> <em>IEEE Transactions on Image Processing</em> 30: 5782–92. <a href="https://doi.org/10.1109/TIP.2021.3085208">https://doi.org/10.1109/TIP.2021.3085208</a>.
+</div>
 <div id="ref-transfer-learning" class="csl-entry" role="listitem">
 Yosinski, Jason, Jeff Clune, Yoshua Bengio, and Hod Lipson. 2014. <span>“How Transferable Are Features in Deep Neural Networks?”</span> <em>Advances in Neural Information Processing Systems</em> 27.
 </div>
 <div id="ref-abstract" class="csl-entry" role="listitem">
 Zeiler, Matthew D, and Rob Fergus. 2014. <span>“Visualizing and Understanding Convolutional Networks.”</span> In <em>European Conference on Computer Vision</em>, 818–33. Springer.
+</div>
+</div>
+</section>
+
+<section id="average-precision" class="title-slide slide level1 center" data-visibility="uncounted">
+<h1>Average precision</h1>
+<p><a href="images/iou.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="images/iou.png"></a></p>
+<!-- # Appendix -->
+<!-- ![](images/trainingloss.png) -->
+<div class="quarto-auto-generated-content">
+<div class="footer footer-default">
+
 </div>
 </div>
 </section>
@@ -1533,6 +2093,7 @@ Zeiler, Matthew D, and Rob Fergus. 2014. <span>“Visualizing and Understanding 
   <script src="prelim_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="prelim_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="prelim_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="prelim_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="prelim_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -1553,7 +2114,8 @@ Zeiler, Matthew D, and Rob Fergus. 2014. <span>“Visualizing and Understanding 
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1724,7 +2286,7 @@ Zeiler, Matthew D, and Rob Fergus. 2014. <span>“Visualizing and Understanding 
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -1958,7 +2520,7 @@ Zeiler, Matthew D, and Rob Fergus. 2014. <span>“Visualizing and Understanding 
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","loop":false,"closeEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":false,"selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

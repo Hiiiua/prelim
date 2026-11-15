@@ -18,6 +18,7 @@ format:
     height: 900
     incremental: true  
     lightbox: true
+    chalkboard: true
 header-includes:
   - |
     <style>
@@ -37,16 +38,18 @@ editor: visual
 
 -   Background
 
--   Preliminary result
+-   Project 1
 
     -   Object detection network performance in identifying footwear characteristics
 
--   Moving forward <!-- * Classification network performance on challenging geometric patterns --> <!-- * Factors influencing polygon classification by neural networks -->
+-   Project 2 and project 3 
+    
+    <!-- * Classification network performance on challenging geometric patterns --> <!-- * Factors influencing polygon classification by neural networks -->
 
--   Questions
+-   Questions and comments
 :::
 
-# [Motivation]{style="font-size: 132px;"}
+# [Motivation]{style="font-size: 92px;"}
 
 <!-- ############################## page4 ####################### -->
 
@@ -284,7 +287,7 @@ Pattern localization and classification.
 
 <!-- ######################## PAGE 9 ############################# -->
 
-# [Background]{style="font-size: 132px;"}
+# [Background]{style="font-size: 92px;"}
 
 ## The Pieces {#background-menu}
 
@@ -315,508 +318,6 @@ Do vision models recognize shapes the way humans do?
 -   Neural network performance in identifying footwear characteristics
 -   Network performance on challenging geometric patterns
 -   Factors influencing neural network predictions
-
-<!-- ####################### Project1 ##################################### -->
-
-# [Project 1]{style="font-size: 132px;"}
-
-Is the object detection network sufficient to automate footwear characteristic identification
-
-## Object Detection Architecture
-
-[Project-1 · 1/7]{style="font-size: 0.55em; color: #64748b;"}
-
-::: nonincremental
--   Frame the footwear characteristic identification problem as an object detection task
-
--   Object detection architecture (Faster-RCNN, @fasterrcnn)
-
--   Transfer learning
-:::
-
-![Object detection diagram](/images/dection_single.png){#fig-detection}
-
-<!-- ##################### project1 Data ################# -->
-
-## Data
-
-[Project-1 · 2/7]{style="font-size: 0.55em; color: #64748b;"}
-
-```{=html}
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-            column-gap: 98px; row-gap: 150px;">
-  <div>
-    <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;">
-```
-Annotation
-
-```{=html}
-    </h3>
-    <ul>
-      <li>Bounding boxes</li>
-      <ul>
-        <li>Duplicate labels and boxes</li>
-        <li>Polygons to boxes</li>
-      <ul>
-    </ul>
-  </div>
-
-  <div>
-    <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;">
-    Class
-    </h3>
-    <ul>
-      <li>13 classes</li>
-        <ul>
-        <li>Class ambiguity</li>
-        <li>Imbalance class distribution</li>
-      <ul>
-    </ul>
-  </div>
-
-
-<style>
-  .annotation-stack img {
-    display: block;
-    width: 100%;
-    height: 200px;
-    max-width: none;
-    max-height: none;
-    object-fit: contain;
-    margin: 0;
-  }
-
-  .annotation-stack summary {
-    display: block;
-    list-style: none;
-    cursor: pointer;
-  }
-
-  .annotation-stack summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .annotation-stack details[open] > summary {
-    display: none;
-  }
-</style>
-
-<figure class="annotation-stack" style="margin: -140px; text-align: center;">
-  <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
-
-    <img src="images/annotation_example.png" alt="">
-
-    <details>
-      <summary>
-        <img src="images/annotation_conversion.png" alt="">
-      </summary>
-      <img src="images/changed.png" alt="">
-    </details>
-
-  </div>
-
-  <figcaption style="margin-top:-40px; font-size: 26px;">
-    Annotation examples
-  </figcaption>
-</figure>
-```
-::: {style="position: relative; top: -80px;"}
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-#| label: fig-class-distribution
-#| fig-cap: "Number of annotations per class"
-#| lightbox: true
-#| fig-attr: 'style="transform: translateY(-80px);"'
-
-library(ggplot2)
-library(tidyverse)
-
-df <- data.frame(
-  # class = c(
-  #   "quadrilateral", "line", "circle", "logo", "hexagon",
-  #   "polygon", "star", "chevron", "ribbon", "bowtie",
-  #   "pentagon", "triangle", "heel", "octagon",
-  #   "rectangle", "text"
-  # ),
-  # count = c(
-  #   2134, 1692, 2143, 616, 478,
-  #   12, 647, 2094, 180, 666,
-  #   131, 1154, 2, 10,
-  #   4, 2727
-  # )
-  class = c(
-    "quad", "line", "circle", "logo", "hexagon",
-     "star", "chevron", "ribbon", "bowtie",
-    "pentagon", "triangle", "octagon",
-     "text"
-  ),
-  count = c(
-    2146, 1692, 2143, 616, 478,
-     647, 2094, 180, 666,
-    131, 1154, 10,
-    2727
-  )
-)
-df <- df %>% arrange(desc(count))
-df %>% 
-  ggplot() +
-  geom_col(aes(y=reorder(class, count), x=count), fill="steelblue") +
-  theme(
-    axis.text.y = element_text(size=10),
-    plot.title = element_text(size = 18, hjust = 0.5)
-  )+
-  labs(title = "Number of Annotations per Class",
-       y = "Class")
-
-```
-:::
-
-## Experimental Setup
-
-[Project-1 · 3/7]{style="font-size: 0.55em; color: #64748b;"}
-
-A total of 4144 images in COCO style (@coco)
-
-::: nonincremental
--   Data Split
-    -   Training set: 70% of the images
-    -   Validation set: 20% of the images
-    -   Test set: 10% of the images
--   Training
-    -   Default Pytorch model (backbone ResNet50 @hyperparameter)
-    -   Hyperparameters suggested by Pytorch (@hyperparameter_py))
-    -   200 epochs
-    -   batch size of 2
-:::
-
-## Evaluation Metric
-
-[Project-1 · 4/7]{style="font-size: 0.55em; color: #64748b;"}
-
-Widely used metric
-
-::: columns
-::: {.column width="60%"}
-::: nonincremental
--   Average Precision
-
-    -   Box locations\
-    -   predicted classes\
-    -   AP\[0.50–0.95\] on COCO dataset: 37% 80 classes ^\[1\]^
-    -   AP\[0.50–0.95\] on our data: 0.03% 13 classes
-:::
-:::
-
-::: {.column width="40%"}
-:::
-:::
-
-::: {style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;"}
-Source: <sup>\[1\]</sup>@hyperparameter_py
-:::
-
-## Improper Metric
-
-[Project-1 · 5/7]{style="font-size: 0.55em; color: #64748b;"}
-
-::: nonincremental
-::: columns
-::: {.column width="50%"}
-::: r-stack
-caption does not follow image change
-
-![](images/whynew21.png){.fragment .fade-out data-fragment-index="0" height="700px"}
-
-![](images/newmetric.png){.fragment data-fragment-index="0" height="450px"}
-:::
-:::
-
-::: {.column width="50%"}
--   Annotation ambiguity in location
-
--   Taking into account all overlapping bounding boxes
-:::
-:::
-:::
-
-<!-- ::: {.nonincremental} -->
-
-<!-- :::: {.columns} -->
-
-<!-- ::: {.column width="50%"} -->
-
-<!-- ![](images/whynew21.png){.fragment .fade-out data-fragment-index=0 height=700px} -->
-
-<!-- ::: -->
-
-<!-- ::: {.column width="50%"} -->
-
-<!-- ```{=html} -->
-
-<!-- <style> -->
-
-<!--   .reveal .slides .fragment.focus-left, -->
-
-<!--   .reveal .slides .fragment.focus-right { -->
-
-<!--     visibility: visible !important; -->
-
-<!--     transition: opacity 0.3s ease !important; -->
-
-<!--   } -->
-
-<!--   .reveal .slides .fragment.focus-left { -->
-
-<!--     opacity: 1 !important; -->
-
-<!--   } -->
-
-<!--   .reveal .slides .fragment.focus-right { -->
-
-<!--     opacity: 0.25 !important; -->
-
-<!--   } -->
-
-<!--   .reveal .slides .fragment.focus-left.visible { -->
-
-<!--     opacity: 0.25 !important; -->
-
-<!--   } -->
-
-<!--   .reveal .slides .fragment.focus-right.visible { -->
-
-<!--     opacity: 1 !important; -->
-
-<!--   } -->
-
-<!-- </style> -->
-
-<!-- <div style="display: grid; -->
-
-<!--             grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); -->
-
-<!--             gap: 28px; height: 480px;"> -->
-
-<!--   <div class="fragment custom focus-left" data-fragment-index="0" -->
-
-<!--        style="display: flex; flex-direction: column; -->
-
-<!--               min-width: 0; color: #111;"> -->
-
-<!--     <h3 style="margin: 50 0 12px; font-size: 38px;"> -->
-
-<!-- ``` -->
-
-<!--   Widely used metric -->
-
-<!-- ```{=html}     -->
-
-<!-- </h3> -->
-
-<!--     <ul style="margin-top: 0;"> -->
-
-<!--       <li> -->
-
-<!-- ``` -->
-
-<!-- Average Precision -->
-
-<!-- ```{=html} -->
-
-<!-- </li> -->
-
-<!-- <ul> -->
-
-<!--       <!-- <li>Intersection over Union (IoU) </li> -->
-
-<!--       <li>location </li> -->
-
-<!--       <li> -->
-
-<!--       Predicted class -->
-
-<!-- ``` -->
-
-<!-- <!-- Precision=$\frac{TP}{TP+FP}$ -->
-
-<!-- ```{=html} -->
-
-<!-- </li> -->
-
-<!-- <li>AP[0.50–0.95] on COCO dataset: 37% 80 -->
-
-<!-- classes <sup>1</sup> </li> -->
-
-<!-- <li>AP[0.50–0.95] on our data: 0.03% 13 classes</li> -->
-
-<!-- </ul> -->
-
-<!-- </ul> -->
-
-<!--     <figure style="margin: -100px 10px 0; text-align: center;"> -->
-
-<!--       <img src="images/whynew2.png" alt="左侧图片" -->
-
-<!--            style="display: block; width: 100%; height: 120px; -->
-
-<!--                   object-fit: contain; object-position: center bottom; -->
-
-<!--                   max-width: none; max-height: none; margin: 0;"> -->
-
-<!--       <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
-
-<!--         <!-- Kanizsa triangle -->
-
-<!--       </figcaption> -->
-
-<!--     </figure> -->
-
-<!--   </div> -->
-
-<!--   <div class="fragment custom focus-right" data-fragment-index="0" -->
-
-<!--        style="display: flex; flex-direction: column; -->
-
-<!--               min-width: 0; color: #111;"> -->
-
-<!--     <h3 style="margin: 0 0 12px; font-size: 38px;"> -->
-
-<!--       New metric -->
-
-<!--     </h3> -->
-
-<!--     <ul style="margin-top: 0;"> -->
-
-<!--       <li> -->
-
-<!-- ``` -->
-
-<!-- Shape discrimination relies on both local curvature information and the global organization of that information (@loffler2003local). -->
-
-<!-- ```{=html} -->
-
-<!-- </li> -->
-
-<!--       <!-- <li>右侧第二条内容</li> -->
-
-<!--       <!-- <li>右侧第三条内容</li> -->
-
-<!--     </ul> -->
-
-<!--     <figure style="margin: -50 0 0; text-align: center;"> -->
-
-<!--       <img src="images/whynew.png" alt="右侧图片" -->
-
-<!--            style="display: block; width: 100%; height: 420px;  -->
-
-<!--                   object-fit: contain; object-position: center bottom; -->
-
-<!--                   max-width: none; max-height: none; margin: 0;"> -->
-
-<!--       <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
-
-<!--         A circle was split into five identical one-cycle segments and arranged in four different ways. -->
-
-<!--       </figcaption> -->
-
-<!--     </figure> -->
-
-<!--   </div> -->
-
-<!-- </div> -->
-
-<!-- ``` -->
-
-## Improving the Metric
-
-[Project-1 · 6/7]{style="font-size: 0.55em; color: #64748b;"}
-
-::: nonincremental
-::: columns
-::: {.column width="40%"}
-Pixel wise evaluation
-
--   Consider all prediceted boxes
--   Less strict on localization
-
-![](images/newmetric.png){height="300px"}
-:::
-
-::: {.column width="60%"}
-![](images/new_estimate.png){height="500px"}
-:::
-:::
-:::
-
-## New Metric Results
-
-[Project-1 · 7/7]{style="font-size: 0.55em; color: #64748b;"}
-
-::: nonincremental
-::: columns
-::: {.column width="40%"}
--   Improved performance
-    -   Accuracy=0.33
-
-![](images/confusion.png)
-:::
-
-::: {.column width="60%"}
-Revisit the output: quad and triangle
-
-![](images/whynew21.png){height="600px"}
-:::
-:::
-:::
-
-# [Moving Forward]{style="font-size: 132px;"}
-
-How well do neural networks perform on shape generalization tasks
-
-## Research Questions
-
-[moving forward · 1/2]{style="font-size: 0.55em; color: #64748b;"}
-
-::: nonincremental
--   How do the networks perform on classifying geometric shapes?
--   Are these network architectures biased toward certain geometric shapes?
--   How do the activation patterns differ between the networks during classification??
--   What are the factors impacting the decisions?
-:::
-
-## Method
-
-[Moving forward · 2/2]{style="font-size: 0.55em; color: #64748b;"}
-
-::: nonincremental
--   Select representative networks\
--   Train the networks with the same training data and test with different test sets
--   Evaluation and analysis
-    -   Accuracy
-    -   Activation correlation
-    -   Generalized linear model, binomial distribution
-:::
-
-::: {layout-ncol="3" layout-valign="top"}
-![Training](images/proj2-1.png){height="200px"}
-
-![test-1](images/proj2-22.png){height="200px"}
-
-![test-2](images/proj2-3.png){height="200px"}
-:::
-
-# [Contribution]{style="font-size: 132px;"}
-
-## Contribution
-
-This is a forensic oriented study, our contributions are as follows:
-
-<!-- * Investigate the gap between computer model and human in shape recognition -->
-
--   Explore whether neural networks can learn abstract shape representation.
--   Identify the factors that impact the decisions of neural networks in polygon classification tasks using statistical study.
--   Provide recommended architecture for forensic footwear related tasks.
-
-# [Questions and comments]{style="font-size: 132px;"}
 
 <!-- ######################## PAGE 25 ############################# -->
 
@@ -1139,17 +640,30 @@ Image source: @abstract
 
 <!-- Information flow in a heierachical way -->
 
-Inspiration of CNN
+Inspiration of a computer vision model [@fukushima1980neocognitron]
 
 ::: nonincremental
 -   Local features are eventually integrated into information for recognition
 :::
 
 
-![](images/Neocognition-1.png) ![](images/hubel_circle.png){width="800px" style="transform: translateX(100px);"}
+![](images/Neocognition-1.png)
+
+![Biological model diagram](images/hubel_circle.png){#fig-biological_model width="800px"}
+
+```{=html}
+<style>
+#fig-biological_model img {
+  transform: translate(-180px, -40px);
+}
+</style>
+```
+
+<!-- ![](images/hubel_circle.png){#fig-biological_model width="800px" style="transform: translateX(-100px);"} -->
+
 
 ::: {style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;"}
-Source: @Hubel1962 @fukushima1980neocognitron @loffler2003local
+Image source: @Hubel1962 @fukushima1980neocognitron @loffler2003local
 :::
 
 ::: {.fragment style="position: absolute; left: 20px; right: 20px; bottom: 20px; font-size: 40px; text-align: center;"}
@@ -1195,7 +709,7 @@ But there's more
 
     <h3 style="margin: 50 0 12px; font-size: 48px;">
 ```
-Gestalt Principles (@gestalt)
+Gestalt Principles [@gestalt]
 
 ```{=html}
 </h3>
@@ -1203,7 +717,7 @@ Gestalt Principles (@gestalt)
     <ul style="margin-top: 0;">
       <li>
 ```
-Illusory contour is not physically present but is filled by the visual system (@kanizsa)
+Illusory contour is not physically present but is filled by the visual system [@kanizsa]
 
 ```{=html}
 </li>
@@ -1211,14 +725,22 @@ Illusory contour is not physically present but is filled by the visual system (@
     </ul>
 
     <figure style="margin: 30px 10px 0; text-align: center;">
+```
+
+:::{#fig-kaniza-triangle}
+```{=html}
       <img src="images/kanizsatriangle.png" alt="左侧图片"
            style="display: block; width: 100%; height: 220px;
                   object-fit: contain; object-position: center bottom;
                   max-width: none; max-height: none; margin: 0;">
+```
+Kanizsa triangle
+:::
 
-      <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;">
-        Kanizsa triangle
-      </figcaption>
+```{=html}
+      <!-- <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
+      <!--   Kanizsa triangle -->
+      <!-- </figcaption> -->
     </figure>
   </div>
 
@@ -1233,7 +755,7 @@ Illusory contour is not physically present but is filled by the visual system (@
     <ul style="margin-top: 0;">
       <li>
 ```
-Shape discrimination relies on both local curvature information and the global organization of that information (@loffler2003local).
+Shape discrimination relies on both local curvature information and the global organization of that information [@loffler2003local].
 
 ```{=html}
 </li>
@@ -1241,34 +763,1160 @@ Shape discrimination relies on both local curvature information and the global o
     </ul>
 
     <figure style="margin: auto 0 0; text-align: center;">
+```
+
+:::{#fig-local-global}
+```{=html}
       <img src="images/wilson.png" alt="右侧图片"
            style="display: block; width: 100%; height: 220px;
                   object-fit: contain; object-position: center bottom;
                   max-width: none; max-height: none; margin: 0;">
+```
 
-      <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;">
-        A circle was split into five identical one-cycle segments and arranged in four different ways.
-      </figcaption>
+A circle was split into five identical one-cycle segments and arranged in four different ways
+
+:::
+
+```{=html}
+      <!-- <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
+      <!--   A circle was split into five identical one-cycle segments and arranged in four different ways. -->
+      <!-- </figcaption> -->
     </figure>
   </div>
 
 </div>
 ```
 ::: {style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;"}
-Source: \@@kanizsa @loffler2003local
+Image sources: \@@kanizsa @loffler2003local
 :::
 
 ::: {.fragment style="position: absolute; left: 20px; right: 20px; bottom: 20px; font-size: 40px; text-align: center;"}
 <!-- Organizing features by both local and global information,  -->
 
-Resembles ViT
+<!-- Resembles computer vision model -->
 :::
 
 ::: {style="position: absolute; left: 20px; bottom: 14px; font-size: 16px;"}
 [← Background](#background-menu)
 :::
 
-# Reference
+
+<!-- ####################### Project1 ##################################### -->
+
+# [Project 1]{style="font-size: 92px;"}
+
+Is the object detection network sufficient to automate footwear characteristic identification
+
+## Object Detection Architecture
+
+[Project-1 · 1/8]{style="font-size: 0.55em; color: #64748b;"}
+
+::: nonincremental
+-   Frame the footwear characteristic identification problem as an object detection task
+
+-   Object detection architecture (Faster-RCNN, @fasterrcnn)
+
+-   Transfer learning
+:::
+
+![Object detection diagram](/images/dection_single.png){#fig-detection}
+
+<!-- ##################### project1 Data ################# -->
+
+## Data
+
+[Project-1 · 2/8]{style="font-size: 0.55em; color: #64748b;"}
+
+```{=html}
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 98px; row-gap: 150px;">
+  <div>
+    <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;">
+```
+Annotation
+
+```{=html}
+    </h3>
+    <ul>
+      <li>Bounding boxes</li>
+      <ul>
+        <li>Duplicate labels and boxes</li>
+        <li>Polygons to boxes</li>
+      <ul>
+    </ul>
+  </div>
+
+  <div>
+    <h3 style="margin: 0 0 8px; font-size: 44px; text-align: left;">
+    Class ambiguity
+    </h3>
+    <ul>
+      <li>13 classes</li>
+        <ul>
+        <li>Class ambiguity</li>
+        <li>Imbalance class distribution</li>
+      <ul>
+    </ul>
+  </div>
+
+
+<style>
+  .annotation-stack img {
+    display: block;
+    width: 100%;
+    height: 200px;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    margin: 0;
+  }
+
+  .annotation-stack summary {
+    display: block;
+    list-style: none;
+    cursor: pointer;
+  }
+
+  .annotation-stack summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .annotation-stack details[open] > summary {
+    display: none;
+  }
+</style>
+
+<div class="annotation-stack" style="margin: -160px; text-align: center;">
+<div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
+
+<img src="images/annotation_example.png" alt="">
+
+<details>
+<summary>
+```
+
+::: {#fig-annotation-conversion}
+
+![](images/changed.png)
+
+Annotation example
+
+:::
+
+```{=html}
+</summary>
+
+<img src="images/changed.png" alt="">
+
+</details>
+</div>
+</div>
+<!-- <figure class="annotation-stack" style="margin: -140px; text-align: center;"> -->
+<!--   <div style="display: grid; grid-template-columns: 1fr; gap: 10px;"> -->
+
+<!--     <img src="images/annotation_example.png" alt=""> -->
+
+<!--     <details> -->
+<!--       <summary> -->
+<!--         <img src="images/annotation_conversion.png" alt=""> -->
+<!--       </summary> -->
+<!--       <img src="images/changed.png" alt=""> -->
+<!--     </details> -->
+
+<!--   </div> -->
+
+<!--   <figcaption style="margin-top:-40px; font-size: 26px;"> -->
+<!--     Annotation examples -->
+<!--   </figcaption> -->
+<!-- </figure> -->
+```
+::: {style="position: relative; top: -80px;"}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+#| label: fig-class-distribution
+#| fig-cap: "Number of annotations per class"
+#| lightbox: true
+#| fig-attr: 'style="transform: translateY(-80px);"'
+
+library(ggplot2)
+library(tidyverse)
+
+df <- data.frame(
+  # class = c(
+  #   "quadrilateral", "line", "circle", "logo", "hexagon",
+  #   "polygon", "star", "chevron", "ribbon", "bowtie",
+  #   "pentagon", "triangle", "heel", "octagon",
+  #   "rectangle", "text"
+  # ),
+  # count = c(
+  #   2134, 1692, 2143, 616, 478,
+  #   12, 647, 2094, 180, 666,
+  #   131, 1154, 2, 10,
+  #   4, 2727
+  # )
+  class = c(
+    "quad", "line", "circle", "logo", "hexagon",
+     "star", "chevron", "ribbon", "bowtie",
+    "pentagon", "triangle", "octagon",
+     "text"
+  ),
+  count = c(
+    2146, 1692, 2143, 616, 478,
+     647, 2094, 180, 666,
+    131, 1154, 10,
+    2727
+  )
+)
+df <- df %>% arrange(desc(count))
+df %>% 
+  ggplot() +
+  geom_col(aes(y=reorder(class, count), x=count), fill="steelblue") +
+  theme(
+    axis.text.y = element_text(size=10),
+    plot.title = element_text(size = 18, hjust = 0.5)
+  )
+# +
+#   labs(title = "Number of Annotations per Class",
+#        y = "Class")
+
+```
+:::
+
+## Experimental Setup
+
+[Project-1 · 3/8]{style="font-size: 0.55em; color: #64748b;"}
+
+A total of 4144 images in COCO style [@coco]
+
+::: nonincremental
+-   Data Split
+    -   Training set: 70% of the images
+    -   Validation set: 20% of the images
+    -   Test set: 10% of the images
+-   Training
+    -   Default Pytorch model [backbone ResNet50 @hyperparameter]
+    -   Hyperparameters suggested by Pytorch [@hyperparameter_py]
+    -   200 epochs
+    -   batch size of 2
+:::
+
+## Evaluation Metric
+
+[Project-1 · 4/8]{style="font-size: 0.55em; color: #64748b;"}
+
+Widely used metric
+
+```{=html}
+<style>
+  .two-bullets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+
+  .reveal .fragment.grey-out {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .reveal .fragment.grey-out.visible,
+  .reveal .fragment.grey-out.visible * {
+    color: #aaa !important;
+  }
+</style>
+
+<div class="two-bullets">
+
+  <div class="fragment grey-out" data-fragment-index="0">
+    <ul>
+      <li>Average Precision</li>
+        <ul>
+          <li>Box locations, sizes</li>
+          <li>predicted classes</li>
+        </ul>
+        <li>COCO dataset
+        <ul>
+          <li>37% 80 classes <sup>[1] [2]</li>
+          <li>Clearly defined locations and classes</li>
+        </ul>
+        <li>Our data: 
+        <ul>
+          <li>3% 13 classes <sup></li>
+          <li>Ambiguous annotation</li>
+        </ul>
+    </ul>
+  </div>
+
+
+  <div class="fragment fade-in" data-fragment-index="0">
+    <ul>
+      <li>Unambiguity Annotation Matters</li>
+        <ul>
+          <li>
+```
+          
+localization precision suffers significantly from inaccurate bounding boxes while classification accuracy is less affected [@refinebboxlocation]
+
+```{=html}
+</li>
+          <li>
+```
+
+When the quality of training data degenerates, the performance of the typical object detectors is severely impaired [@refineclearcategory]
+
+```{=html}
+</li>
+</ul>
+  </div>
+
+</div>
+```
+
+<!-- ::: columns -->
+<!-- ::: nonincremental -->
+<!-- -    -->
+
+<!--     -   \ -->
+<!--     -   \  -->
+<!--     -    -->
+<!--     -    -->
+<!-- ::: -->
+
+<!-- ::: {.column width="40%"} -->
+<!-- ::: -->
+<!-- ::: -->
+
+::: {style="position: absolute; right: -14px; bottom: -30px; font-size: 12px; line-height: 1.2; color: #555; text-align: right;"}
+Source: [1]@hyperparameter_py [2]@coco
+:::
+
+
+
+
+## Improper Metric
+
+[Project-1 · 5/8]{style="font-size: 0.55em; color: #64748b;"}
+
+::: nonincremental
+::: columns
+::: {.column width="50%"}
+::: r-stack
+
+
+![A prediction on our shoesole data](images/whynew2100.png){#fig-shiny .fragment .fade-out data-fragment-index="0" height="650px"}
+
+![Zoomed in diagram](images/newmetric.png){#fig-zoomed .fragment data-fragment-index="0" height="450px"}
+:::
+:::
+
+::: {.column width="50%"}
+-   Annotation ambiguity        
+    * box size
+    * box location
+
+-   Taking into account all overlapping bounding boxes
+:::
+:::
+:::
+
+<!-- ::: {.nonincremental} -->
+
+<!-- :::: {.columns} -->
+
+<!-- ::: {.column width="50%"} -->
+
+<!-- ![](images/whynew21.png){.fragment .fade-out data-fragment-index=0 height=700px} -->
+
+<!-- ::: -->
+
+<!-- ::: {.column width="50%"} -->
+
+<!-- ```{=html} -->
+
+<!-- <style> -->
+
+<!--   .reveal .slides .fragment.focus-left, -->
+
+<!--   .reveal .slides .fragment.focus-right { -->
+
+<!--     visibility: visible !important; -->
+
+<!--     transition: opacity 0.3s ease !important; -->
+
+<!--   } -->
+
+<!--   .reveal .slides .fragment.focus-left { -->
+
+<!--     opacity: 1 !important; -->
+
+<!--   } -->
+
+<!--   .reveal .slides .fragment.focus-right { -->
+
+<!--     opacity: 0.25 !important; -->
+
+<!--   } -->
+
+<!--   .reveal .slides .fragment.focus-left.visible { -->
+
+<!--     opacity: 0.25 !important; -->
+
+<!--   } -->
+
+<!--   .reveal .slides .fragment.focus-right.visible { -->
+
+<!--     opacity: 1 !important; -->
+
+<!--   } -->
+
+<!-- </style> -->
+
+<!-- <div style="display: grid; -->
+
+<!--             grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); -->
+
+<!--             gap: 28px; height: 480px;"> -->
+
+<!--   <div class="fragment custom focus-left" data-fragment-index="0" -->
+
+<!--        style="display: flex; flex-direction: column; -->
+
+<!--               min-width: 0; color: #111;"> -->
+
+<!--     <h3 style="margin: 50 0 12px; font-size: 38px;"> -->
+
+<!-- ``` -->
+
+<!--   Widely used metric -->
+
+<!-- ```{=html}     -->
+
+<!-- </h3> -->
+
+<!--     <ul style="margin-top: 0;"> -->
+
+<!--       <li> -->
+
+<!-- ``` -->
+
+<!-- Average Precision -->
+
+<!-- ```{=html} -->
+
+<!-- </li> -->
+
+<!-- <ul> -->
+
+<!--       <!-- <li>Intersection over Union (IoU) </li> -->
+
+<!--       <li>location </li> -->
+
+<!--       <li> -->
+
+<!--       Predicted class -->
+
+<!-- ``` -->
+
+<!-- <!-- Precision=$\frac{TP}{TP+FP}$ -->
+
+<!-- ```{=html} -->
+
+<!-- </li> -->
+
+<!-- <li>AP[0.50–0.95] on COCO dataset: 37% 80 -->
+
+<!-- classes <sup>1</sup> </li> -->
+
+<!-- <li>AP[0.50–0.95] on our data: 0.03% 13 classes</li> -->
+
+<!-- </ul> -->
+
+<!-- </ul> -->
+
+<!--     <figure style="margin: -100px 10px 0; text-align: center;"> -->
+
+<!--       <img src="images/whynew2.png" alt="左侧图片" -->
+
+<!--            style="display: block; width: 100%; height: 120px; -->
+
+<!--                   object-fit: contain; object-position: center bottom; -->
+
+<!--                   max-width: none; max-height: none; margin: 0;"> -->
+
+<!--       <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
+
+<!--         <!-- Kanizsa triangle -->
+
+<!--       </figcaption> -->
+
+<!--     </figure> -->
+
+<!--   </div> -->
+
+<!--   <div class="fragment custom focus-right" data-fragment-index="0" -->
+
+<!--        style="display: flex; flex-direction: column; -->
+
+<!--               min-width: 0; color: #111;"> -->
+
+<!--     <h3 style="margin: 0 0 12px; font-size: 38px;"> -->
+
+<!--       New metric -->
+
+<!--     </h3> -->
+
+<!--     <ul style="margin-top: 0;"> -->
+
+<!--       <li> -->
+
+<!-- ``` -->
+
+<!-- Shape discrimination relies on both local curvature information and the global organization of that information (@loffler2003local). -->
+
+<!-- ```{=html} -->
+
+<!-- </li> -->
+
+<!--       <!-- <li>右侧第二条内容</li> -->
+
+<!--       <!-- <li>右侧第三条内容</li> -->
+
+<!--     </ul> -->
+
+<!--     <figure style="margin: -50 0 0; text-align: center;"> -->
+
+<!--       <img src="images/whynew.png" alt="右侧图片" -->
+
+<!--            style="display: block; width: 100%; height: 420px;  -->
+
+<!--                   object-fit: contain; object-position: center bottom; -->
+
+<!--                   max-width: none; max-height: none; margin: 0;"> -->
+
+<!--       <figcaption style="margin-top: 6px; font-size: 16px; line-height: 1.2;"> -->
+
+<!--         A circle was split into five identical one-cycle segments and arranged in four different ways. -->
+
+<!--       </figcaption> -->
+
+<!--     </figure> -->
+
+<!--   </div> -->
+
+<!-- </div> -->
+
+<!-- ``` -->
+
+## Improving the Metric
+
+[Project-1 · 6/8]{style="font-size: 0.55em; color: #64748b;"}
+
+::: nonincremental
+::: columns
+::: {.column width="40%"}
+Pixel-wise evaluation
+
+-   Consider all predicted boxes
+-   Less strict on localization
+
+![Zoomed in diagram](images/newmetric.png){#fig-diagram height="300px"}
+:::
+
+::: {.column width="60%"}
+![Pixel-wise evaluation](images/new_estimate2.png){#fig-image height="600px"}
+
+
+:::
+
+
+:::
+:::
+
+## New Metric Results
+
+[Project-1 · 7/8]{style="font-size: 0.55em; color: #64748b;"}
+
+::: nonincremental
+::: columns
+::: {.column width="60%"}
+-   Improved performance
+    -   Accuracy=0.33
+
+![Confusion matrix on the test set](images/confusion.png){#fig-newmetric fig-align="left"}
+
+<!-- ::: -->
+
+<!-- ::: {.column width="60%"} -->
+
+<!-- * What has been addressed:         -->
+
+<!--    * Ambiguous location        -->
+<!--    * Ambiguous size -->
+
+<!-- * What has not been addressed: -->
+
+<!--     * Ambiguous classes -->
+
+:::
+:::
+:::
+
+## Project 1 Summary
+
+[Project-1 · 8/8]{style="font-size: 0.55em; color: #64748b;"}
+
+
+```{=html}
+<style>
+
+.split-demo .image-swap {
+  display: grid !important;
+  position: relative;
+  z-index: 0;
+}
+
+.reveal .split-demo .image-swap > img {
+  grid-area: 1 / 1 !important;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.split-demo .image-stage > .grey-mask {
+  z-index: 10;
+}
+
+
+
+  
+  .split-demo .left-boxes {
+    margin-top: 80px;
+  }
+  
+  
+  .split-demo .content-box {
+    padding: 24px;
+  }
+  
+  .split-demo {
+    --bullet-size: 40px;
+    --title-size: 44px;
+  }
+
+  .split-demo {
+    --bullet-size: 26px; 
+    --title-size: 30px;  
+
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 24px;
+    text-align: left;
+  }
+
+  
+  .split-demo .left-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+  }
+
+  .split-demo .content-box {
+    border: 2px solid #888;
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+
+  .reveal .split-demo h3 {
+    font-size: var(--title-size);
+    margin: 0 0 12px;
+  }
+
+  .reveal .split-demo ul {
+    display: block;
+    margin: 0;
+    padding-left: 1.2em;
+    font-size: var(--bullet-size);
+  }
+
+  .reveal .split-demo li {
+    margin-bottom: 10px;
+  }
+
+  
+  .reveal .split-demo .fragment.grey-later {
+    visibility: inherit !important;
+    opacity: 1 !important;
+  }
+
+  .reveal .split-demo .fragment.grey-later.visible,
+  .reveal .split-demo .fragment.grey-later.visible * {
+    color: #aaa !important;
+  }
+
+  
+  .split-demo .right-panel {
+    min-width: 0;
+  }
+
+  .reveal .split-demo .right-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
+    margin: 20px 0 0;
+    border: none;
+    box-shadow: none;
+  }
+  
+  
+  .split-demo .image-stage {
+    position: relative;
+    width: 80%;
+    margin-top: 20px;
+    cursor: zoom-in;
+  }
+  
+  .reveal .split-demo .image-stage img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    margin: 0;
+  }
+  
+  
+  .image-stage .grey-mask {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    width: 60%;
+    height: 100%;
+    background: rgba(170, 170, 170, 0.7);
+    pointer-events: none;
+  }
+  
+  
+  .masked-image-dialog {
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-width: 94vw;
+    max-height: 94vh;
+  }
+  
+  .masked-image-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.75);
+  }
+  
+  .masked-image-dialog .image-stage {
+    position: relative;
+    margin: 0;
+    cursor: zoom-out;
+  }
+  
+  .masked-image-dialog img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 90vw;
+    max-height: 85vh;
+    margin: 0;
+  }
+</style>
+
+<div class="split-demo">
+
+  <div class="left-boxes">
+
+    
+    <div class="content-box fragment fade-in"
+         data-fragment-index="0">
+      <h3> Ambiguity </h3>
+
+      <ul >
+        <li class="fragment grey-later"
+            data-fragment-index="1">
+          Box location
+        </li>
+
+        <li class="fragment grey-later"
+            data-fragment-index="1">
+          Box size
+        </li>
+
+        <li>
+          Class
+        </li>
+      </ul>
+    </div>
+
+    
+    <div class="content-box fragment fade-in"
+         data-fragment-index="1">
+      <h3>Implementing a new metric</h3>
+
+      <ul>
+        <li>Resolve the box ambiguity</li>
+        <li>Accuracy: 33%
+        <!-- , not far from the reported accuracy 37% -->
+        </li>
+        <li>Class ambiguity has not been considered </li>
+      </ul>
+    </div>
+
+  </div>
+
+    
+  
+
+```
+
+:::{#fig-quad fragment-index=2 .fragment .fade-in fragment-index=2}
+```{=html}    
+<div class="right-panel">
+
+  <ul>
+    <li>Revisit the result </li>
+  </ul>
+
+
+  <div class="image-stage"
+       role="button"
+       tabindex="0"
+       aria-label="zoom in"
+       onclick="
+         event.stopPropagation();
+         const replacement = this.querySelector('.replacement-image');
+         const current = replacement.classList.contains('visible')
+           ? replacement
+           : this.querySelector('.original-image');
+         const popup = document.getElementById('swap-preview');
+         popup.querySelector('img').src = current.src;
+         popup.showModal();
+       "
+       onkeydown="
+         if (event.key === 'Enter' || event.key === ' ') {
+           event.preventDefault();
+           event.stopPropagation();
+           this.click();
+         }
+       ">
+       
+    <div class="image-swap">
+      <img class="original-image"
+           src="images/whynew201.png"
+           alt="Original">
+      <img class="replacement-image fragment fade-in"
+           data-fragment-index="3"
+           src="images/whynew202.png"
+           alt="Replacement">
+  </div>
+
+<div class="grey-mask"></div>
+  </div>
+</div>
+
+```
+
+
+Quad and triangle
+
+:::
+
+```{=html}
+    
+
+    
+    
+
+<dialog id="swap-preview"
+        class="masked-image-dialog"
+        aria-label=""
+        onclick="event.stopPropagation(); this.close();">
+
+  <div class="image-stage">
+    <img src="images/whynew21.png" alt="Enlarged image">
+
+
+    <div class="grey-mask"></div>
+  </div>
+</dialog>
+
+
+</dialog>
+
+```
+
+
+<!-- <div class="step-box fragment fade-in" data-fragment-index="0"> -->
+<!--     <h3>Step 1</h3> -->
+<!--     <p>Ambiguity</p> -->
+<!--       <li> -->
+<!--         
+<!--       </li> -->
+<!--   </div> -->
+
+ 
+
+<!-- ::: nonincremental -->
+<!-- ::: columns -->
+<!-- ::: {.column width="40%"} -->
+
+<!-- -   We implemented a new metric -->
+
+<!--     -   Accuracy=0.33 -->
+
+<!-- ![](images/confusion.png) -->
+<!-- ::: -->
+
+<!-- ::: {.column width="60%"} -->
+
+<!-- * Revisit the result   -->
+
+<!-- ![](){height="600px"} -->
+
+<!-- ::: -->
+<!-- ::: -->
+<!-- ::: -->
+
+
+
+
+
+
+
+
+# [Project 2 and Project 3]{style="font-size: 92px;"}
+
+How well do neural networks perform on shape generalization tasks
+
+## Follow-up Questions
+
+[Project 2 and Project 3 · 1/3]{style="font-size: 0.55em; color: #64748b;"}
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: nonincremental
+* Project 2
+
+  *  How do the networks perform on classifying geometric shapes?
+  *  Are these network architectures biased toward certain geometric shapes?
+  
+  *  How do the activation patterns differ between the networks during classification?
+
+:::
+:::
+
+::: {.column width="50%"}
+::: nonincremental
+* Project 3
+
+  * Is side count or side length impacting the decisions?
+
+:::
+:::
+
+::::
+
+
+
+## Experimental Study Design
+
+[Project 2 and Project 3 · 2/3]{style="font-size: 0.55em; color: #64748b;"}
+
+```{=html}
+<style>
+  .bullet-photo-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 60fr) minmax(0, 40fr);
+    gap: 30px;
+    text-align: left;
+  }
+
+  .reveal .bullet-photo-layout ul {
+    display: block;
+    margin: 0;
+    padding-left: 1.2em;
+    font-size: 30px; /* bullet 字号 */
+  }
+
+  .bullet-photo-layout li {
+    margin-bottom: 15px;
+  }
+
+  .bullet-photo-layout .photo-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 0;
+  }
+
+  .reveal .bullet-photo-layout .photo-column img {
+    display: block;
+    width: 100%;
+    height: auto; /* 每张图片占据的高度 */
+    object-fit: contain;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+  }
+</style>
+
+<div class="bullet-photo-layout">
+
+  <!-- 左侧 bullet -->
+  <div>
+    <ul>
+      <li class="fragment fade-in" data-fragment-index="0">
+        Select architectures that were state-of-the-art at the time
+      </li>
+
+      <li class="fragment fade-in" data-fragment-index="1">
+        Design tests using geometric shapes for both the training and test sets
+        <ul>
+          <li class="fragment fade-in" data-fragment-index="1">
+          Train networks on the training data
+          and evaluate on test sets
+          </li>
+          <li class="fragment fade-in" data-fragment-index="2">
+          Test sets
+          </li>
+            <ul>
+              </li>
+                <li class="fragment fade-in" data-fragment-index="2">
+                Seen test sets
+              </li>
+                <li class="fragment fade-in" data-fragment-index="3">
+                Challenging test tests
+              </li>
+            </ul>
+            
+          <li class="fragment fade-in" data-fragment-index="4">
+          Evaluation
+          </li>
+            <ul>
+              </li>
+                <li class="fragment fade-in" data-fragment-index="4">
+                Classification accuracy - architecture bias
+              </li>
+                <li class="fragment fade-in" data-fragment-index="4">
+                Feature map - activation correlation
+              </li>
+              </li>
+                <li class="fragment fade-in" data-fragment-index="4">
+                Classification outcome - correct or incorrect - Binomial generalized linear model (GLM)
+              </li>
+            </ul>
+        </ul>
+      </li>
+
+      <!-- <li class="fragment fade-in" data-fragment-index="2"> -->
+      <!--   Third point -->
+      <!-- </li> -->
+    </ul>
+  </div>
+
+  <!-- 右侧图片竖排 -->
+  <div class="photo-column">
+    <img class="fragment fade-in"
+         data-fragment-index="1"
+         src="images/test01.png"
+         alt="First example">
+
+    <img class="fragment fade-in"
+         data-fragment-index="2"
+         src="images/test02.png"
+         alt="Second example">
+
+    <img class="fragment fade-in"
+         data-fragment-index="3"
+         src="images/test03.png"
+         alt="Third example">
+```
+
+:::{#fig-test_all .fragment .fade-in fragment-index=4}
+```{=html}         
+    <img
+         src="images/test_all.png"
+         alt="Third example">
+```
+
+Experimental design diagram
+
+:::
+  
+```{=html}  
+</div>
+
+</div>
+```
+
+## Summary - Project 2 and Project 3
+[Project 2 and Project 3 · 3/3]{style="font-size: 0.55em; color: #64748b;"}
+
+::: {.fragment .nonincremental fragment-index=0}
+
+Investigate neural networks’ performance on shape generalization tasks 
+
+* Explore whether neural networks can learn abstract shape representation
+
+* Identify the factors that impact the decisions of neural networks in polygon classification tasks using statistical study
+
+*   Provide recommended architecture for geometric related tasks
+
+:::
+
+::: {.fragment .nonincremental fragment-index=1 style="margin-top: -10px;"}
+
+* **Progress**
+
+:::
+
+::::: {.fragment .nonincremental fragment-index=2 style="margin-top: -30px; font-size: 28px; position: relative; left: 40px;"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**Project 2 progress**
+
+  - [✓]{style="color: green;"} Literature review 
+  - [✓]{style="color: green;"} Design 
+  - [✓]{style="color: green;"} Date simulation 
+  - [✓]{style="color: green;"} Experiment
+  - [◷]{style="color: #e69500;"} Analysis
+  - Write-up
+
+
+:::
+
+::: {.column width="50%"}
+
+**Project 3 progress**
+
+  - [✓]{style="color: green;"} Literature review
+  - [✓]{style="color: green;"} Design
+  - [✓]{style="color: green;"} Date simulation 
+  - [◷]{style="color: #e69500;"} Experiment
+  - Analysis
+  - Write-up
+  
+:::
+
+::::
+
+:::::
+
+# [Questions and comments]{style="font-size: 92px;"}
+
+
+
+# Reference{.allowframebreaks}
+::: {#refs}
+:::
 
 # Average precision {visibility="uncounted"}
 
