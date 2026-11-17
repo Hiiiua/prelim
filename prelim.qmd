@@ -274,7 +274,7 @@ Pattern localization and classification.
 
 -   Do vision models recognize shapes the way humans do? <!-- (#nnhuman) -->
 
--   The coding of shoesoles is ambiguous
+-   The coding and annotationg of shoesoles is ambiguous
 :::
 
 ::: {layout-ncol="1" layout-valign="top"}
@@ -289,8 +289,8 @@ Pattern localization and classification.
 
 Do vision models recognize shapes the way humans do?
 
--   Neural network performance in identifying footwear characteristics
--   Network performance on challenging geometric shapes
+-   Object detection neural network performance in identifying footwear characteristics
+-   Classification network performance on challenging geometric shapes
 -   Factors influencing neural network classification
 
 ::: notes
@@ -492,7 +492,7 @@ Image source: @deng2009imagenet
 -   Training from scratch is expensive and requires large training data\
     <!-- * 5–6 days on two NVIDIA GTX 580 GPUs running in parallel, for a total of approximately 240–288 GPU-hours. -->
 
-    -   ImageNet: a large-scale image dataset widely used to train and evaluate networks
+    -   ImageNet: a large-scale image dataset widely used to train and evaluate classification networks
     -   1.2 million images, 1000 classes
 
 -   AlexNet [@alexnet]
@@ -501,7 +501,7 @@ Image source: @deng2009imagenet
 
     -   59.3% accuracy on 50k test images
 
--   Reuse the backbone
+-   Transfer learning: reuse the backbone
 
     -   Initializing with transferred <br> features can improve generalization <br> performance [@transfer-learning]
 
@@ -530,7 +530,7 @@ Image source: @deng2009imagenet
   }
 </style>
 ```
-A pretrained backbone can be used to extract features
+A pretrained backbone can be reused to extract features
 :::
 
 ::: {style="position: absolute; left: 0px; bottom: -10px; font-size: 16px;"}
@@ -679,6 +679,16 @@ Image source: @abstract
 
 ## Hubel and Wiesel Biological Vision Model {#human}
 
+::: notes
+human recognition relies on the biological nervous system
+
+LGB: lateral geniculate nucleus
+
+convert and send the electrical signals to visual area
+
+transmit signal
+:::
+
 [Background · Human recognition · 1/2]{style="font-size: 0.55em; color: #64748b;"}
 
 <!-- Information flow in a heierachical way -->
@@ -711,6 +721,14 @@ But there's more
 :::
 
 ## Grouping
+
+::: notes
+not just transmit signal
+
+we organize visual elements into meaningful whole objects rather than seeing them as separate parts.
+
+
+:::
 
 [Background · Human recognition · 2/2]{style="font-size: 0.55em; color: #64748b;"}
 
@@ -1011,7 +1029,7 @@ df <- df %>% arrange(desc(count))
 df %>% 
   ggplot() +
   geom_col(aes(y=reorder(class, count), x=count), fill="steelblue") +
-  xlab("Classes") +
+  ylab("Class") +
   theme(
     axis.text.y = element_text(size=10),
     plot.title = element_text(size = 18, hjust = 0.5)
@@ -1075,7 +1093,7 @@ Widely used metric
           <li>Box locations, sizes</li>
           <li>predicted classes</li>
         </ul>
-        <li>COCO dataset
+        <li>COCO dataset: large-scale data for object detection
         <ul>
           <li>37% 80 classes <sup>[1] [2]</li>
           <li>Clearly defined locations and classes</li>
@@ -1786,7 +1804,7 @@ How well do neural networks perform on shape generalization tasks
   .reveal .bullet-photo-layout .photo-column img {
     display: block;
     width: 100%;
-    height: auto; /* 每张图片占据的高度 */
+    height: auto; 
     object-fit: contain;
     margin: 0;
     border: none;
@@ -1819,7 +1837,7 @@ How well do neural networks perform on shape generalization tasks
                 Seen test set
               </li>
                 <li class="fragment fade-in" data-fragment-index="3">
-                Challenging test test
+                Challenging test set
               </li>
             </ul>
             

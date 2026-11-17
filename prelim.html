@@ -596,7 +596,7 @@ Figure&nbsp;4: Pattern localization and classification.
 <li><p>Automating the process: <a href="#/nn">neural networks</a></p></li>
 <li><p>Human making judgement: <a href="#/human">human recognition</a></p></li>
 <li><p>Do vision models recognize shapes the way humans do? <!-- (#nnhuman) --></p></li>
-<li><p>The coding of shoesoles is ambiguous</p></li>
+<li><p>The coding and annotationg of shoesoles is ambiguous</p></li>
 </ul>
 </div>
 <div>
@@ -629,8 +629,8 @@ Figure&nbsp;5: Example coding from the SoleMate user manual
 <p><span style="font-size: 0.55em; color: #64748b;">Background · 2/2</span></p>
 <p>Do vision models recognize shapes the way humans do?</p>
 <ul>
-<li class="fragment">Neural network performance in identifying footwear characteristics</li>
-<li class="fragment">Network performance on challenging geometric shapes</li>
+<li class="fragment">Object detection neural network performance in identifying footwear characteristics</li>
+<li class="fragment">Classification network performance on challenging geometric shapes</li>
 <li class="fragment">Factors influencing neural network classification</li>
 </ul>
 <aside class="notes">
@@ -836,7 +836,7 @@ Figure&nbsp;6: Neural network diagram
 <li class="fragment"><p>Training from scratch is expensive and requires large training data<br>
 <!-- * 5–6 days on two NVIDIA GTX 580 GPUs running in parallel, for a total of approximately 240–288 GPU-hours. --></p>
 <ul>
-<li class="fragment">ImageNet: a large-scale image dataset widely used to train and evaluate networks</li>
+<li class="fragment">ImageNet: a large-scale image dataset widely used to train and evaluate classification networks</li>
 <li class="fragment">1.2 million images, 1000 classes</li>
 </ul></li>
 <li class="fragment"><p>AlexNet <span class="citation" data-cites="alexnet">(<a href="#/reference" role="doc-biblioref" onclick="">Krizhevsky, Sutskever, and Hinton 2012</a>)</span></p>
@@ -844,7 +844,7 @@ Figure&nbsp;6: Neural network diagram
 <li class="fragment"><p>Accuracy: percentage of correct predictions</p></li>
 <li class="fragment"><p>59.3% accuracy on 50k test images</p></li>
 </ul></li>
-<li class="fragment"><p>Reuse the backbone</p>
+<li class="fragment"><p>Transfer learning: reuse the backbone</p>
 <ul>
 <li class="fragment">Initializing with transferred <br> features can improve generalization <br> performance <span class="citation" data-cites="transfer-learning">(<a href="#/reference" role="doc-biblioref" onclick="">Yosinski et al. 2014</a>)</span></li>
 </ul></li>
@@ -875,7 +875,7 @@ Figure&nbsp;6: Neural network diagram
 </style>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-backbone-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: A pretrained backbone can be used to extract features
+Figure&nbsp;7: A pretrained backbone can be reused to extract features
 </figcaption>
 </figure>
 </div>
@@ -955,6 +955,22 @@ Figure&nbsp;7: A pretrained backbone can be used to extract features
 </section>
 <section id="human" class="slide level2">
 <h2>Hubel and Wiesel Biological Vision Model</h2>
+<aside class="notes">
+<p>human recognition relies on the biological nervous system</p>
+<p>LGB: lateral geniculate nucleus</p>
+<p>convert and send the electrical signals to visual area</p>
+<p>transmit signal</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <p><span style="font-size: 0.55em; color: #64748b;">Background · Human recognition · 1/2</span></p>
 <!-- Information flow in a heierachical way -->
 <p>Inspiration of a computer vision model <span class="citation" data-cites="fukushima1980neocognitron">(<a href="#/reference" role="doc-biblioref" onclick="">Fukushima 1980</a>)</span></p>
@@ -989,6 +1005,20 @@ Figure&nbsp;8: Biological model diagram
 </section>
 <section id="grouping" class="slide level2">
 <h2>Grouping</h2>
+<aside class="notes">
+<p>not just transmit signal</p>
+<p>we organize visual elements into meaningful whole objects rather than seeing them as separate parts.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <p><span style="font-size: 0.55em; color: #64748b;">Background · Human recognition · 2/2</span></p>
 <style>
   .reveal .slides .fragment.focus-left,
@@ -1293,7 +1323,7 @@ Figure&nbsp;13: Number of annotations per class
           <li>Box locations, sizes</li>
           <li>predicted classes</li>
         </ul>
-        <li>COCO dataset
+        <li>COCO dataset: large-scale data for object detection
         <ul>
           <li>37% 80 classes <sup>[1] [2]</sup></li>
           <li>Clearly defined locations and classes</li>
@@ -1886,7 +1916,7 @@ Figure&nbsp;19: Quad and triangle
   .reveal .bullet-photo-layout .photo-column img {
     display: block;
     width: 100%;
-    height: auto; /* 每张图片占据的高度 */
+    height: auto; 
     object-fit: contain;
     margin: 0;
     border: none;
@@ -1919,7 +1949,7 @@ Figure&nbsp;19: Quad and triangle
                 Seen test set
               </li>
                 <li class="fragment fade-in" data-fragment-index="3">
-                Challenging test test
+                Challenging test set
               </li>
             </ul>
             
@@ -2517,7 +2547,7 @@ Zeiler, Matthew D, and Rob Fergus. 2014. <span>“Visualizing and Understanding 
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":false,"descPosition":"bottom","openEffect":"zoom"});
+    <script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","loop":false,"selector":".lightbox","closeEffect":"zoom"});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {
