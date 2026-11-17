@@ -4,7 +4,7 @@ bibliography: prelimref.bib
 subtitle: |
   Neural Network-based Vision Model and Visual Recognition of Human
 author: "Muxin Hua <br>
-  <span style='font-size: 0.7em;'>Advisors: Dr. Susan VanderPlas, Dr. Heike Hoffman</span>"
+  <span style='font-size: 0.7em;'>Advisors: Dr. Susan VanderPlas, Dr. Heike Hofmann</span>"
 institute: "University of Nebraska Lincoln"
 # advisors: "Susan VanderPlas, Heike Hoffman"
 format: 
