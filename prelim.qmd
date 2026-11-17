@@ -1011,6 +1011,7 @@ df <- df %>% arrange(desc(count))
 df %>% 
   ggplot() +
   geom_col(aes(y=reorder(class, count), x=count), fill="steelblue") +
+  xlab("Classes") +
   theme(
     axis.text.y = element_text(size=10),
     plot.title = element_text(size = 18, hjust = 0.5)
@@ -1376,7 +1377,7 @@ Pixel-wise evaluation
 ::: nonincremental
 ::: columns
 ::: {.column width="60%"}
--   Improved performance
+-   Performance
     -   Accuracy=33%
 
 ![Confusion matrix on the test set](images/confusion.png){#fig-newmetric fig-align="left"}
@@ -1735,6 +1736,7 @@ How well do neural networks perform on shape generalization tasks
     -   Are these networks biased toward certain geometric shapes?
 
     -   How do the activation patterns differ between the networks in classification?
+    
 :::
 :::
 
