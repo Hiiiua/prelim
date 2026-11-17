@@ -267,6 +267,11 @@ Pattern localization and classification.
 
 [Background · 1/2]{style="font-size: 0.55em; color: #64748b;"}
 
+::: notes
+The unique way of recognizing shapes also reflected in the data annotation
+
+:::
+
 ::: nonincremental
 -   Automating the process: [neural networks](#nn)
 
@@ -274,7 +279,7 @@ Pattern localization and classification.
 
 -   Do vision models recognize shapes the way humans do? <!-- (#nnhuman) -->
 
--   The coding and annotationg of shoesoles is ambiguous
+-   The coding and annotation of shoesoles is ambiguous
 :::
 
 ::: {layout-ncol="1" layout-valign="top"}
@@ -289,7 +294,7 @@ Pattern localization and classification.
 
 Do vision models recognize shapes the way humans do?
 
--   Object detection neural network performance in identifying footwear characteristics
+-   Object detection neural network performance in identifying footwear patterns
 -   Classification network performance on challenging geometric shapes
 -   Factors influencing neural network classification
 
@@ -302,6 +307,12 @@ RIGHT!!!! NOT DOWN
 ## Neural Networks Process Images for Various Tasks {#nn}
 
 [Background · Neural network · 1/2]{style="font-size: 0.55em; color: #64748b;"}
+
+
+::: notes
+
+We need to train the data
+:::
 
 Train with annotated data to get optimal weights in both the backbone and the head for specific tasks
 
